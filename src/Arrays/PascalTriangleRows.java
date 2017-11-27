@@ -20,14 +20,14 @@ public class PascalTriangleRows {
                 row.add(1);
                 row.add(1);
             } else {
-                previousRow = triangle.get(i-1);
+                previousRow = triangle.get(i - 1);
                 for (int j = 0; j < i + 1; j++) {
                     if (j == 0) {
                         row.add(1);
                     } else if (j == i) {
                         row.add(1);
                     } else {
-                        row.add(previousRow.get(j) + previousRow.get(j-1));
+                        row.add(previousRow.get(j) + previousRow.get(j - 1));
                     }
 
                 }

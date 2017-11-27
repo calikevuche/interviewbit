@@ -24,6 +24,6 @@ public class L3Numrange {
 
     public static void main(String[] args) {
         L3Numrange instance = new L3Numrange();
-        System.out.println(instance.numRange(new ArrayList<>(Arrays.asList(10,5,1,0,2)), 6,8));
+        System.out.println(instance.numRange(new ArrayList<>(Arrays.asList(10, 5, 1, 0, 2)), 6, 8));
     }
 }

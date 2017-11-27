@@ -23,8 +23,7 @@ public class MatrixSearch {
             if (b == a.get(mid).get(0)) return 1;
             else if (b < a.get(mid).get(0)) {
                 end = mid - 1;
-            }
-            else if (b > a.get(mid).get(0)) {
+            } else if (b > a.get(mid).get(0)) {
                 start = mid + 1;
                 rowIndex = mid;
             }
@@ -38,8 +37,7 @@ public class MatrixSearch {
             if (b == a.get(rowIndex).get(mid)) return 1;
             else if (b < a.get(rowIndex).get(mid)) {
                 end = mid - 1;
-            }
-            else if (b > a.get(rowIndex).get(mid)) {
+            } else if (b > a.get(rowIndex).get(mid)) {
                 start = mid + 1;
             }
         }
@@ -49,12 +47,12 @@ public class MatrixSearch {
 
     public static void main(String[] args) {
         MatrixSearch instance = new MatrixSearch();
-        ArrayList <ArrayList<Integer>> A = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> A = new ArrayList<>();
 
 //        A.add(new ArrayList<>(Arrays.asList(20, 21, 44, 48, 62, 64, 65, 73, 77)));
-        A.add(new ArrayList<>(Arrays.asList(1,2,3,4)));
-        A.add(new ArrayList<>(Arrays.asList(5,6,7,8)));
-        A.add(new ArrayList<>(Arrays.asList(9,10,11,12)));
+        A.add(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
+        A.add(new ArrayList<>(Arrays.asList(5, 6, 7, 8)));
+        A.add(new ArrayList<>(Arrays.asList(9, 10, 11, 12)));
 
 //        A.add(new ArrayList<>(Arrays.asList(3)));
 //        A.add(new ArrayList<>(Arrays.asList(29)));

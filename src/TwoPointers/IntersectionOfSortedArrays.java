@@ -13,7 +13,7 @@ public class IntersectionOfSortedArrays {
     public ArrayList<Integer> intersect(final List<Integer> a, final List<Integer> b) {
         ArrayList<Integer> result = new ArrayList<>();
         if (a.size() == 0 || b.size() == 0) return result;
-        int leftA = 0, leftB = 0, rightA = a.size()-1, rightB = b.size()-1;
+        int leftA = 0, leftB = 0, rightA = a.size() - 1, rightB = b.size() - 1;
         while (leftA <= rightA && leftB <= rightB) {
             if (a.get(leftA).intValue() == b.get(leftB).intValue()) {
                 result.add(a.get(leftA));
@@ -39,8 +39,8 @@ public class IntersectionOfSortedArrays {
 
     public static void main(String[] args) {
         IntersectionOfSortedArrays instance = new IntersectionOfSortedArrays();
-        System.out.println(instance.intersect(Arrays.asList(1,2,3,3,4,5,6), Arrays.asList(3,3,5)));
-        System.out.println(instance.intersect(Arrays.asList(1,2,3,3,4,5,6), Arrays.asList(3,5)));
-        System.out.println(instance.intersect(Arrays.asList(1,2,3,3,4,5,6), Arrays.asList(1)));
+        System.out.println(instance.intersect(Arrays.asList(1, 2, 3, 3, 4, 5, 6), Arrays.asList(3, 3, 5)));
+        System.out.println(instance.intersect(Arrays.asList(1, 2, 3, 3, 4, 5, 6), Arrays.asList(3, 5)));
+        System.out.println(instance.intersect(Arrays.asList(1, 2, 3, 3, 4, 5, 6), Arrays.asList(1)));
     }
 }

@@ -10,7 +10,7 @@ public class ReverseBits {
         int n = 32;
         while (n > 0) {
             int rem = (int) (a % 2);
-            result = result*2 + rem;
+            result = result * 2 + rem;
             a >>= 1; // equals to a /= 2;
             n--;
         }

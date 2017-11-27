@@ -18,12 +18,10 @@ public class RedundantBraces {
                 braces.push(c);
                 operators.push(1);
                 opened = true;
-            }
-            else if (c == ')') {
+            } else if (c == ')') {
                 braces.pop();
                 opened = true;
-            }
-            else if (opened && braces.size() > 0 && (c == '+' || c == '-' || c == '*' || c == '/')) {
+            } else if (opened && braces.size() > 0 && (c == '+' || c == '-' || c == '*' || c == '/')) {
                 operators.pop();
                 opened = false;
             }

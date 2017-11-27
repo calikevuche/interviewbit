@@ -14,9 +14,9 @@ public class Anagrams {
             Arrays.sort(chars);
             String key = String.valueOf(chars);
             if (map.containsKey(key)) {
-                map.get(key).add(i+1);
+                map.get(key).add(i + 1);
             } else {
-                map.put(key, new ArrayList<>(Arrays.asList(i+1)));
+                map.put(key, new ArrayList<>(Arrays.asList(i + 1)));
             }
         }
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
@@ -28,6 +28,6 @@ public class Anagrams {
 
     public static void main(String[] args) {
         Anagrams anagrams = new Anagrams();
-        anagrams.anagrams(new ArrayList<>(Arrays.asList("cat","dog","god","tca")));
+        anagrams.anagrams(new ArrayList<>(Arrays.asList("cat", "dog", "god", "tca")));
     }
 }

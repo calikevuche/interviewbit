@@ -13,14 +13,14 @@ public class Atoi {
             if (index1 == -1 && (c != ' ' && c != '+' && c != '-' && (c < '0' || c > '9'))) {
                 break;
             }
-            if (index1 == -1 && (c >= '0' && c <= '9' || c == '+' || c == '-') && (i == 0 || chars[i-1] == ' ')) {
+            if (index1 == -1 && (c >= '0' && c <= '9' || c == '+' || c == '-') && (i == 0 || chars[i - 1] == ' ')) {
                 index1 = i;
             }
             if (index1 != -1) {
-                if (i == chars.length-1) {
+                if (i == chars.length - 1) {
                     index2 = i;
-                } else if (i != index1 && (c == ' ' || c < '0' || c > '9')){
-                    index2 = i-1;
+                } else if (i != index1 && (c == ' ' || c < '0' || c > '9')) {
+                    index2 = i - 1;
                     break;
                 } else if (c < '0' || c > '9') {
                     if (!(index1 == i && (c == '+' || c == '-'))) index1 = -1;
@@ -28,7 +28,7 @@ public class Atoi {
             }
         }
         if (index1 == -1 && index2 == -1) return 0;
-        String numSrt = a.substring(index1, index2+1);
+        String numSrt = a.substring(index1, index2 + 1);
         long result = 0;
         char[] numbers = numSrt.toCharArray();
         int koef = 1;
@@ -52,16 +52,18 @@ public class Atoi {
     public int atoi(final String a) {
         char[] str = a.toCharArray();
         int sign = 1, base = 0, i = 0;
-        while (str[i] == ' ') { i++; }
+        while (str[i] == ' ') {
+            i++;
+        }
         if (str[i] == '-' || str[i] == '+') {
             sign = (str[i++] == '-') ? -1 : 1;
         }
         while (str[i] >= '0' && str[i] <= '9') {
-            if (base >  Integer.MAX_VALUE / 10 || (base == Integer.MAX_VALUE / 10 && str[i] - '0' > 7)) {
+            if (base > Integer.MAX_VALUE / 10 || (base == Integer.MAX_VALUE / 10 && str[i] - '0' > 7)) {
                 if (sign == 1) return Integer.MAX_VALUE;
                 else return Integer.MIN_VALUE;
             }
-            base  = 10 * base + (str[i++] - '0');
+            base = 10 * base + (str[i++] - '0');
         }
         return base * sign;
     }

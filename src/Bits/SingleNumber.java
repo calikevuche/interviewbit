@@ -11,7 +11,7 @@ public class SingleNumber {
     // DO NOT MODIFY THE LIST
     public int singleNumber(final List<Integer> a) {
         int result = 0;
-        for (int num: a) {
+        for (int num : a) {
             result ^= num;
         }
         return result;
@@ -19,6 +19,6 @@ public class SingleNumber {
 
     public static void main(String[] args) {
         SingleNumber instance = new SingleNumber();
-        System.out.println(instance.singleNumber(Arrays.asList(1,2,2,3,1)));
+        System.out.println(instance.singleNumber(Arrays.asList(1, 2, 2, 3, 1)));
     }
 }

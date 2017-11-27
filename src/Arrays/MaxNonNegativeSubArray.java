@@ -50,7 +50,7 @@ public class MaxNonNegativeSubArray {
         long sumA = sum(a);
         long sumB = sum(b);
 
-        if (sumA > sumB)  return 1;
+        if (sumA > sumB) return 1;
         else if (sumA < sumB) return -1;
         else if (sumA == sumB) {
             int lengthA = a.size();
@@ -74,6 +74,6 @@ public class MaxNonNegativeSubArray {
 //        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList( -1, -1, -1, -1, -1 ))));
 //        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList( 1967513926, 1540383426, -1303455736, -521595368 ))));
 //        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList( 756898537, -1973594324, -2038664370, -184803526, 1424268980 ))));
-        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList( 24115, -75629, -46517, 30105, 19451, -82188, 99505, 6752, -36716, 54438, -51501, 83871, 11137, -53177, 22294, -21609, -59745, 53635, -98142, 27968, -260, 41594, 16395, 19113, 71006, -97942, 42082, -30767, 85695, -73671 ))));
+        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList(24115, -75629, -46517, 30105, 19451, -82188, 99505, 6752, -36716, 54438, -51501, 83871, 11137, -53177, 22294, -21609, -59745, 53635, -98142, 27968, -260, 41594, 16395, 19113, 71006, -97942, 42082, -30767, 85695, -73671))));
     }
 }

@@ -14,13 +14,13 @@ public class Fraction {
         long numer = Math.abs((long) numerator);
         long denom = Math.abs((long) denominator);
         StringBuilder sb = new StringBuilder();
-        HashMap<Long,Integer> map = new HashMap<>(); // numerator, index
+        HashMap<Long, Integer> map = new HashMap<>(); // numerator, index
         long diff = -1, temp = 0;
         if (numer >= denom) {
             temp = numer / denom;
             diff = numer - temp * denom;
             numer = diff * 10;
-            sb.append(diff == 0 ? temp : temp+".");
+            sb.append(diff == 0 ? temp : temp + ".");
         } else {
             numer *= 10;
             sb.append("0.");
@@ -29,7 +29,7 @@ public class Fraction {
             if (map.containsKey(numer)) {
                 int index = map.get(numer);
                 String s = sb.substring(index);
-                sb.replace(index, index+sb.length(), "("+s+")");
+                sb.replace(index, index + sb.length(), "(" + s + ")");
                 break;
             } else {
                 map.put(numer, sb.length());
@@ -44,7 +44,7 @@ public class Fraction {
                 sb.append("0");
             }
         }
-        return sign+sb.toString();
+        return sign + sb.toString();
     }
 
     public static void main(String[] args) {

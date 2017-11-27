@@ -10,31 +10,31 @@ public class PrettyJson {
     public ArrayList<String> prettyJSON(String a) {
         ArrayList<String> result = new ArrayList<>();
         if (a.length() == 0) return result;
-        a = a.replace(" ","");
+        a = a.replace(" ", "");
         char[] chars = a.toCharArray();
         int beginIndex = 0;
         int tabCount = 0;
         for (int i = 0; i < a.length(); i++) {
             char c = chars[i];
             if (c == ',') {
-                if (beginIndex < i) result.add(getTabs(tabCount)+a.substring(beginIndex, i+1));
-                beginIndex = i+1;
+                if (beginIndex < i) result.add(getTabs(tabCount) + a.substring(beginIndex, i + 1));
+                beginIndex = i + 1;
             }
             if (c == '{' || c == '[') {
-                if (beginIndex < i) result.add(getTabs(tabCount)+a.substring(beginIndex, i));
-                result.add(getTabs(tabCount)+String.valueOf(c));
-                tabCount ++;
-                beginIndex = i+1;
+                if (beginIndex < i) result.add(getTabs(tabCount) + a.substring(beginIndex, i));
+                result.add(getTabs(tabCount) + String.valueOf(c));
+                tabCount++;
+                beginIndex = i + 1;
             }
             if (c == '}' || c == ']') {
-                if (beginIndex < i) result.add(getTabs(tabCount)+a.substring(beginIndex, i));
+                if (beginIndex < i) result.add(getTabs(tabCount) + a.substring(beginIndex, i));
                 tabCount--;
-                if (i+1 < a.length() && chars[i+1] == ',') {
-                    result.add(getTabs(tabCount)+String.valueOf(c)+String.valueOf(','));
-                    beginIndex = i+2;
+                if (i + 1 < a.length() && chars[i + 1] == ',') {
+                    result.add(getTabs(tabCount) + String.valueOf(c) + String.valueOf(','));
+                    beginIndex = i + 2;
                 } else {
-                    result.add(getTabs(tabCount)+String.valueOf(c));
-                    beginIndex = i+1;
+                    result.add(getTabs(tabCount) + String.valueOf(c));
+                    beginIndex = i + 1;
                 }
             }
         }

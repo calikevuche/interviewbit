@@ -15,7 +15,7 @@ public class AllocateBooks {
         }
 
         long sum = 0;
-        for (int element: a) {
+        for (int element : a) {
             sum += element;
         }
 

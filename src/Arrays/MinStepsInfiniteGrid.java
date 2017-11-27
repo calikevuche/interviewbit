@@ -13,14 +13,14 @@ public class MinStepsInfiniteGrid {
     public int coverPoints(ArrayList<Integer> X, ArrayList<Integer> Y) {
         int distance = 0;
         for (int i = 0; i < X.size() - 1; i++) {
-            int x = X.get(i) - X.get(i+1);
-            int y = Y.get(i) - Y.get(i+1);
-            distance += max(modulus(x),modulus(y));
+            int x = X.get(i) - X.get(i + 1);
+            int y = Y.get(i) - Y.get(i + 1);
+            distance += max(modulus(x), modulus(y));
         }
         return distance;
     }
 
-    public int max (int a, int b) {
+    public int max(int a, int b) {
         if (a > b) return a;
         else return b;
     }
@@ -31,9 +31,9 @@ public class MinStepsInfiniteGrid {
 
     public static void main(String[] args) {
         MinStepsInfiniteGrid ins = new MinStepsInfiniteGrid();
-        ArrayList<Integer> X = new ArrayList<>(Arrays.asList(1,2,3));
-        ArrayList<Integer> Y = new ArrayList<>(Arrays.asList(0,5,6));
-        System.out.println(ins.coverPoints(X,Y));
+        ArrayList<Integer> X = new ArrayList<>(Arrays.asList(1, 2, 3));
+        ArrayList<Integer> Y = new ArrayList<>(Arrays.asList(0, 5, 6));
+        System.out.println(ins.coverPoints(X, Y));
 
     }
 }

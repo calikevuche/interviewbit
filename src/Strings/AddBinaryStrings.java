@@ -14,8 +14,8 @@ public class AddBinaryStrings {
         int carry = 0;
 
         while (i < b.length() && carry == 0 || i < a.length()) {
-            int numA = charsA[a.length()-1-i] - '0';
-            int numB = i < b.length() ? charsB[b.length()-1-i] - '0' : 0;
+            int numA = charsA[a.length() - 1 - i] - '0';
+            int numB = i < b.length() ? charsB[b.length() - 1 - i] - '0' : 0;
             int sum = numA + numB + carry;
             switch (sum) {
                 case 0:
@@ -43,8 +43,8 @@ public class AddBinaryStrings {
 
     public static void main(String[] args) {
         AddBinaryStrings instance = new AddBinaryStrings();
-        System.out.println(instance.addBinary("101","111"));
-        System.out.println(instance.addBinary("10","111"));
-        System.out.println(instance.addBinary("",""));
+        System.out.println(instance.addBinary("101", "111"));
+        System.out.println(instance.addBinary("10", "111"));
+        System.out.println(instance.addBinary("", ""));
     }
 }

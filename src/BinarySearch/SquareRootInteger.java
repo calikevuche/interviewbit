@@ -13,11 +13,9 @@ public class SquareRootInteger {
             int mid = low + (high - low) / 2;
             if (mid * mid == a) {
                 return mid;
-            }
-            else if (high - low == 0) {
+            } else if (high - low == 0) {
                 return low;
-            }
-            else if (mid * mid < a) {
+            } else if (mid * mid < a) {
                 low = mid + 1;
                 if (low * low > a) {
                     return mid;

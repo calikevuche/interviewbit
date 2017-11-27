@@ -11,7 +11,7 @@ public class MaxContinuousSeriesOf1s {
     public ArrayList<Integer> maxone(ArrayList<Integer> a, int b) {
         ArrayList<Integer> result = new ArrayList<>();
         for (int i = 0; i < a.size(); i++) {
-            if (i == 0 || a.get(i-1) != 1) {
+            if (i == 0 || a.get(i - 1) != 1) {
                 int end = i, counter = b;
                 if (a.size() - i < result.size()) break;
                 while (end < a.size()) {
@@ -36,7 +36,7 @@ public class MaxContinuousSeriesOf1s {
 
     public static void main(String[] args) {
         MaxContinuousSeriesOf1s instance = new MaxContinuousSeriesOf1s();
-        System.out.println(instance.maxone(new ArrayList<>(Arrays.asList(1, 1, 0, 1, 1, 0, 0, 1, 1, 1 )), 1));
-        System.out.println(instance.maxone(new ArrayList<>(Arrays.asList(0, 1, 1, 1  )), 0));
+        System.out.println(instance.maxone(new ArrayList<>(Arrays.asList(1, 1, 0, 1, 1, 0, 0, 1, 1, 1)), 1));
+        System.out.println(instance.maxone(new ArrayList<>(Arrays.asList(0, 1, 1, 1)), 0));
     }
 }

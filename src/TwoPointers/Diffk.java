@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Diffk {
 
     public int diffPossible1(ArrayList<Integer> a, int b) {
-        for (int i = a.size()-1; i >= 0 ; i--) {
+        for (int i = a.size() - 1; i >= 0; i--) {
             for (int j = 0; j < i; j++) {
                 int diff = a.get(i) - a.get(j);
                 if (diff == b) return 1;
@@ -21,8 +21,8 @@ public class Diffk {
 
     public int diffPossible(ArrayList<Integer> a, int b) {
         int j = 0;
-        for (int i = 0; i < a.size() ; i++) {
-            j = Math.max(j, i+1);
+        for (int i = 0; i < a.size(); i++) {
+            j = Math.max(j, i + 1);
             while (j < a.size() && a.get(j) - a.get(i) < b) j++;
             if (j < a.size() && a.get(j) - a.get(i) == b) return 1;
         }

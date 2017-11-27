@@ -14,13 +14,13 @@ public class DifferentBitsSumPairwise {
         int sum = 0;
         for (int i = 0; i < A.size(); i++) {
             int a = A.get(i);
-            for (int j = i+1; j < A.size(); j++) {
+            for (int j = i + 1; j < A.size(); j++) {
                 int b = A.get(j);
-                sum += getDiffBits(a,b) % MOD;
+                sum += getDiffBits(a, b) % MOD;
                 sum %= MOD;
             }
         }
-        return (int) ((2*sum) % MOD);
+        return (int) ((2 * sum) % MOD);
     }
 
     public int getDiffBits(int a, int b) {
@@ -30,7 +30,7 @@ public class DifferentBitsSumPairwise {
     public int numSetBits(long a) {
         int result = 0;
         while (a > 0) {
-            a = a & (a-1);
+            a = a & (a - 1);
             result++;
         }
         return result;
@@ -47,7 +47,7 @@ public class DifferentBitsSumPairwise {
                 int bit = A.get(j) & (1 << i);
                 if (bit == 0) countZeros++;
             }
-            sum += (countZeros * (A.size()-countZeros) * 2L) % MOD;
+            sum += (countZeros * (A.size() - countZeros) * 2L) % MOD;
             if (sum >= MOD) sum -= MOD; // VERY IMPORTANT !!! VERY IMPORTANT
         }
         return (int) sum;

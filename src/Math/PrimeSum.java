@@ -14,7 +14,7 @@ public class PrimeSum {
         for (int i = 2; i < a; i++) {
             if (isPrime(i) == 1 && isPrime(a - i) == 1) {
                 arrayList.add(i);
-                arrayList.add(a-i);
+                arrayList.add(a - i);
                 return arrayList;
             }
         }
@@ -25,9 +25,9 @@ public class PrimeSum {
         ArrayList<Integer> arrayList = new ArrayList<>();
         Integer[] sieve = getSieveArray(a);
         for (int i = 2; i < a; i++) {
-            if (sieve[i] == 1 && sieve[a-i] == 1) {
+            if (sieve[i] == 1 && sieve[a - i] == 1) {
                 arrayList.add(i);
-                arrayList.add(a-i);
+                arrayList.add(a - i);
                 return arrayList;
             }
         }

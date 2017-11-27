@@ -11,8 +11,8 @@ public class RomanToInteger {
         for (int i = 0; i < chars.length; i++) {
             char c = chars[i];
             int startResult = result;
-            if (i+1 < chars.length) {
-                char next = chars[i+1];
+            if (i + 1 < chars.length) {
+                char next = chars[i + 1];
                 if (c == 'I') {
                     if (next == 'V') result += 4;
                     else if (next == 'X') result += 9;

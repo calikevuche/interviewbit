@@ -12,7 +12,7 @@ public class RainWaterTrapped {
     // DO NOT MODIFY THE LIST
     public int trap(final List<Integer> a) {
         int left = 0;
-        int right = a.size()-1;
+        int right = a.size() - 1;
         int res = 0;
         int maxLeft = 0, maxRight = 0;
         while (left <= right) {

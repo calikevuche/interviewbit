@@ -10,7 +10,7 @@ public class L4Subtract {
     public ListNode subtract(ListNode a) {
         int length = getLength(a);
         if (length < 2) return a;
-        int halfSize = length/2;
+        int halfSize = length / 2;
 
         ListNode current = copy(a);
         ListNode prev = null;

@@ -18,13 +18,13 @@ public class Subsets2 {
     }
 
     void subsets(ArrayList<Integer> input, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> set, int i) {
-        if (i > input.size()-1) {
+        if (i > input.size() - 1) {
             return;
         }
         ArrayList<Integer> newSet = new ArrayList<>(set);
         newSet.add(input.get(i));
         result.add(newSet);
-        subsets(input, result, newSet, i+1);
+        subsets(input, result, newSet, i + 1);
         int j = i + 1;
         while (j < input.size() && input.get(j) == input.get(i)) {
             j++;
@@ -34,6 +34,6 @@ public class Subsets2 {
 
     public static void main(String[] args) {
         Subsets2 subsets = new Subsets2();
-        System.out.println(subsets.subsetsWithDup(new ArrayList<>(Arrays.asList(1,2,2))));
+        System.out.println(subsets.subsetsWithDup(new ArrayList<>(Arrays.asList(1, 2, 2))));
     }
 }

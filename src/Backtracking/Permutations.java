@@ -11,7 +11,7 @@ public class Permutations {
 
     public ArrayList<ArrayList<Integer>> permute(ArrayList<Integer> a) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        permute(result, a, new ArrayList<Integer>(), 0);
+        permute(result, a, new ArrayList<>(), 0);
         return result;
     }
 
@@ -29,7 +29,7 @@ public class Permutations {
         int removed = newInput.remove(i);
         newOutput.add(removed);
         permute(result, newInput, newOutput, 0);
-        permute(result, input, output, i+1);
+        permute(result, input, output, i + 1);
     }
 
     //Second solution
@@ -41,22 +41,22 @@ public class Permutations {
     }
 
     void permute(ArrayList<Integer> list, int start, ArrayList<ArrayList<Integer>> result) {
-        if (start == list.size()-1) {
+        if (start == list.size() - 1) {
             ArrayList<Integer> newList = new ArrayList<>(list);
-            result.add(newList);
+            if (!result.contains(newList)) {
+                result.add(newList);
+            }
         }
         for (int i = start; i < list.size(); i++) {
             Collections.swap(list, start, i);
-            permute(list, start+1, result);
+            permute(list, start + 1, result);
             Collections.swap(list, start, i);
         }
     }
 
     public static void main(String[] args) {
         Permutations permutations = new Permutations();
-//        System.out.println(permutations.permute(new ArrayList<>(Arrays.asList(1,2))));
-//        System.out.println(permutations.permute(new ArrayList<>(Arrays.asList(1,2,3))));
-        System.out.println(permutations.permute(new ArrayList<>(Arrays.asList(1,2,3,4))));
-        System.out.println(permutations.permute2(new ArrayList<>(Arrays.asList(1,2,3,4))));
+//        System.out.println(permutations.permute(new ArrayList<>(Arrays.asList(1,2,3,4))));
+        System.out.println(permutations.permute2(new ArrayList<>(Arrays.asList(1, 2, 3, 4))));
     }
 }

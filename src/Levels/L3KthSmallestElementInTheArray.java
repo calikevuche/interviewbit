@@ -14,7 +14,7 @@ public class L3KthSmallestElementInTheArray {
     public int kthsmallest1(final List<Integer> a, int k) {
         List<Integer> b = new ArrayList<>(a);
         Collections.sort(b);
-        if (k-1 < b.size()) return b.get(k-1);
+        if (k - 1 < b.size()) return b.get(k - 1);
         else return -1;
     }
 
@@ -28,7 +28,7 @@ public class L3KthSmallestElementInTheArray {
                 heap.add(a.get(i));
                 if (a.get(i) > max) {
                     max = a.get(i);
-                    index = heap.size()-1;
+                    index = heap.size() - 1;
                 }
             } else {
                 if (a.get(i) < max) {
@@ -50,19 +50,19 @@ public class L3KthSmallestElementInTheArray {
 
     public int quickSort(List<Integer> li, int k, int start, int end) {
         int pos = partition(li, start, end);
-        if (pos == k-1) {
+        if (pos == k - 1) {
             return li.get(pos);
-        } else if (pos > k-1) {
+        } else if (pos > k - 1) {
             return quickSort(li, k, start, pos);
         } else {
-            return quickSort(li, k, pos+1, end);
+            return quickSort(li, k, pos + 1, end);
         }
     }
 
     public int partition(List<Integer> list, int start, int end) {
         int pivot = start;
-        int j = start+1;
-        for (int i = start+1; i < end; i++) {
+        int j = start + 1;
+        for (int i = start + 1; i < end; i++) {
             if (list.get(i) < list.get(pivot)) {
                 int temp = list.get(j);
                 list.set(j, list.get(i));
@@ -71,11 +71,11 @@ public class L3KthSmallestElementInTheArray {
             }
         }
         if (j <= end) {
-            int temp = list.get(j-1);
-            list.set(j-1, list.get(pivot));
+            int temp = list.get(j - 1);
+            list.set(j - 1, list.get(pivot));
             list.set(pivot, temp);
         }
-        return j-1;
+        return j - 1;
     }
 
     // DO NOT MODIFY THE LIST. IT IS READ ONLY
@@ -85,7 +85,7 @@ public class L3KthSmallestElementInTheArray {
 
     public static void main(String[] args) {
         L3KthSmallestElementInTheArray instance = new L3KthSmallestElementInTheArray();
-        instance.kthsmallest(new ArrayList<>(Arrays.asList(2,1,4,3,2)), 3);
+        instance.kthsmallest(new ArrayList<>(Arrays.asList(2, 1, 4, 3, 2)), 3);
         instance.kthsmallest(new ArrayList<>(Arrays.asList(60, 94, 63, 3, 86, 40, 93, 36, 56, 48, 17, 10, 23, 43, 77, 1, 1, 93, 79, 4, 10, 47, 1, 99, 91, 53, 99, 18, 52, 61, 84, 10, 13, 52, 3, 9, 78, 16, 7, 62)), 22);
     }
 }

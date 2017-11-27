@@ -15,15 +15,15 @@ public class SortByColor {
         for (int i = 0; i < a.size(); i++) {
             if (a.get(i) == 0) {
                 a.add(red, a.get(i));
-                a.remove(i+1);
+                a.remove(i + 1);
                 red++;
             } else if (a.get(i) == 1) {
-                a.add(red+white, a.get(i));
-                a.remove(i+1);
+                a.add(red + white, a.get(i));
+                a.remove(i + 1);
                 white++;
             } else if (a.get(i) == 2) {
-                a.add(red+white+blue, a.get(i));
-                a.remove(i+1);
+                a.add(red + white + blue, a.get(i));
+                a.remove(i + 1);
                 blue++;
             }
         }
@@ -60,7 +60,7 @@ public class SortByColor {
         int zero = 0;
         int two = a.size() - 1;
 
-        for (int i = 0; i <= two;) {
+        for (int i = 0; i <= two; ) {
             if (a.get(i) == 0) {
                 int temp = a.get(zero);
                 a.set(zero, 0);
@@ -81,8 +81,8 @@ public class SortByColor {
 
     public static void main(String[] args) {
         SortByColor instance = new SortByColor();
-        instance.sortColors(new ArrayList<>(Arrays.asList(0,1,2,0,1,2)));
-        instance.sortColors(new ArrayList<>(Arrays.asList(0,1,0,1,2,0,0,0,1,2,2,2,2,0,1)));
+        instance.sortColors(new ArrayList<>(Arrays.asList(0, 1, 2, 0, 1, 2)));
+        instance.sortColors(new ArrayList<>(Arrays.asList(0, 1, 0, 1, 2, 0, 0, 0, 1, 2, 2, 2, 2, 0, 1)));
         instance.sortColors(new ArrayList<>(Arrays.asList()));
     }
 }

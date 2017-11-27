@@ -10,7 +10,7 @@ public class SortList {
         if (a.next == null) return a;
         int len = getLength(a);
         ListNode left = a;
-        for (int i = 0; i < len/2 - 1; i++) {
+        for (int i = 0; i < len / 2 - 1; i++) {
             a = a.next;
         }
         ListNode right = a.next;
@@ -26,8 +26,7 @@ public class SortList {
         if (left.val < right.val) {
             result = new ListNode(left.val);
             left = left.next;
-        }
-        else {
+        } else {
             result = new ListNode(right.val);
             right = right.next;
         }
@@ -36,8 +35,7 @@ public class SortList {
             if (left.val < right.val) {
                 result.next = new ListNode(left.val);
                 left = left.next;
-            }
-            else {
+            } else {
                 result.next = new ListNode(right.val);
                 right = right.next;
             }

@@ -13,15 +13,15 @@ public class SimplifyDirectoryPath {
     public String simplifyPath1(String a) {
         Stack stack = new Stack();
         String[] paths = a.split("/");
-        for (String s: paths) {
+        for (String s : paths) {
             if (s.equals("") || s.equals(".") || (stack.isEmpty() && s.equals(".."))) continue;
-            else if(s.equals("..")) stack.pop();
+            else if (s.equals("..")) stack.pop();
             else stack.push(s);
         }
         String result = "";
         while (!stack.isEmpty()) {
             String dir = (String) stack.pop();
-            result = "/"+dir+result;
+            result = "/" + dir + result;
         }
         return result.isEmpty() ? "/" : result;
     }
@@ -29,15 +29,15 @@ public class SimplifyDirectoryPath {
     public String simplifyPath(String a) {
         LinkedList queue = new LinkedList();
         String[] paths = a.split("/");
-        for (String s: paths) {
+        for (String s : paths) {
             if (s.equals("") || s.equals(".") || (queue.isEmpty() && s.equals(".."))) continue;
-            else if(s.equals("..")) queue.remove();
-            else queue.add(0,s);
+            else if (s.equals("..")) queue.remove();
+            else queue.add(0, s);
         }
         String result = "";
         while (!queue.isEmpty()) {
             String dir = (String) queue.poll();
-            result = "/"+dir+result;
+            result = "/" + dir + result;
         }
         return result.isEmpty() ? "/" : result;
     }

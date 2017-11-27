@@ -15,7 +15,7 @@ public class NearestSmallerElement {
         for (int i = 1; i < arr.size(); i++) {
             int nearestSmaller = -1;
             int value = arr.get(i);
-            for (int j = i-1; j >= 0; j--) {
+            for (int j = i - 1; j >= 0; j--) {
                 if (arr.get(j) < value) {
                     nearestSmaller = arr.get(j);
                     break;

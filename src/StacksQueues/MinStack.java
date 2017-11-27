@@ -22,7 +22,7 @@ public class MinStack {
     }
 
     public void pop() {
-        if (!stack.isEmpty()){
+        if (!stack.isEmpty()) {
             int value = stack.pop();
             if (value == minValue) {
                 minStack.pop();

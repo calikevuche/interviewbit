@@ -23,8 +23,8 @@ public class MergeTwoSortedListsII {
 
     public static void main(String[] args) {
         MergeTwoSortedListsII instance = new MergeTwoSortedListsII();
-        instance.merge(new ArrayList<>(Arrays.asList(1,5,8)), new ArrayList<>(Arrays.asList(6,9)));
-        instance.merge(new ArrayList<>(Arrays.asList(1,5,8)), new ArrayList<>(Arrays.asList(6,9,11,12)));
-        instance.merge(new ArrayList<>(Arrays.asList()), new ArrayList<>(Arrays.asList(1,2)));
+        instance.merge(new ArrayList<>(Arrays.asList(1, 5, 8)), new ArrayList<>(Arrays.asList(6, 9)));
+        instance.merge(new ArrayList<>(Arrays.asList(1, 5, 8)), new ArrayList<>(Arrays.asList(6, 9, 11, 12)));
+        instance.merge(new ArrayList<>(Arrays.asList()), new ArrayList<>(Arrays.asList(1, 2)));
     }
 }

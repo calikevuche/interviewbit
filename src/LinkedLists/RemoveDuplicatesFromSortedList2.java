@@ -22,8 +22,7 @@ public class RemoveDuplicatesFromSortedList2 {
                 if (unique == null) {
                     unique = new ListNode(a.val);
                     firstUnique = unique;
-                }
-                else {
+                } else {
                     unique.next = new ListNode(a.val);
                     unique = unique.next;
                 }
@@ -35,8 +34,7 @@ public class RemoveDuplicatesFromSortedList2 {
             if (unique == null) {
                 unique = a;
                 firstUnique = unique;
-            }
-            else unique.next = a;
+            } else unique.next = a;
         }
         return firstUnique;
     }

@@ -20,7 +20,7 @@ public class RemoveDuplicatesFromSortedArray2 {
                     counter++;
                 } else if (counter == 1) {
                     int lastIndex = findLastIndex(a, i);
-                    a.subList(i,lastIndex+1).clear();
+                    a.subList(i, lastIndex + 1).clear();
                     i--;
                 }
             } else {
@@ -34,15 +34,15 @@ public class RemoveDuplicatesFromSortedArray2 {
     }
 
     public int findLastIndex(ArrayList<Integer> a, int firstIndex) {
-        int left = firstIndex, right = a.size()-1;
+        int left = firstIndex, right = a.size() - 1;
         int number = a.get(firstIndex);
         while (left < right) {
-            int mid = (left+right)/2;
+            int mid = (left + right) / 2;
             if (a.get(mid) == number) {
-                if (a.get(mid+1) != number) return mid;
-                else left = mid+1;
+                if (a.get(mid + 1) != number) return mid;
+                else left = mid + 1;
             } else if (a.get(mid) > number) {
-                right = mid-1;
+                right = mid - 1;
             }
         }
         return right;
@@ -50,8 +50,8 @@ public class RemoveDuplicatesFromSortedArray2 {
 
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedArray2 instance = new RemoveDuplicatesFromSortedArray2();
-        instance.removeDuplicates(new ArrayList<>(Arrays.asList(1,1,2)));
-        instance.removeDuplicates(new ArrayList<>(Arrays.asList(1,1,1,1,1,1,1,1,2,2,2,2,2,2,2)));
+        instance.removeDuplicates(new ArrayList<>(Arrays.asList(1, 1, 2)));
+        instance.removeDuplicates(new ArrayList<>(Arrays.asList(1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2)));
         instance.removeDuplicates(new ArrayList<>(Arrays.asList()));
     }
 }

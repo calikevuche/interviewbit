@@ -30,7 +30,7 @@ public class ListCycle {
     public ListNode detectCycle2(ListNode a) {
         List<ListNode> nodes = new ArrayList<>();
         while (a != null) {
-            for (ListNode node: nodes) {
+            for (ListNode node : nodes) {
                 if (node == a) return node;
             }
             nodes.add(a);

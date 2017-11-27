@@ -39,22 +39,22 @@ public class RotateMatrix {
         int n = a.size();
         if (n == 0) return;
         for (int i = 0; i < n; i++) {
-            for (int j = i; j < n-i-1; j++) {
+            for (int j = i; j < n - i - 1; j++) {
 
                 // right
                 int value = a.get(i).get(j);
-                int temp = a.get(j).get(n-i-1);
-                a.get(j).set(n-i-1, value);
+                int temp = a.get(j).get(n - i - 1);
+                a.get(j).set(n - i - 1, value);
 
                 // down
                 value = temp;
-                temp = a.get(n-i-1).get(n-j-1);
-                a.get(n-i-1).set(n-j-1, value);
+                temp = a.get(n - i - 1).get(n - j - 1);
+                a.get(n - i - 1).set(n - j - 1, value);
 
                 // left
                 value = temp;
-                temp = a.get(n-j-1).get(i);
-                a.get(n-j-1).set(i, value);
+                temp = a.get(n - j - 1).get(i);
+                a.get(n - j - 1).set(i, value);
 
                 // up
                 value = temp;
@@ -67,10 +67,10 @@ public class RotateMatrix {
     public static void main(String[] args) {
         RotateMatrix instance = new RotateMatrix();
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-        list.add(new ArrayList<>(Arrays.asList(1,2,3,4)));
-        list.add(new ArrayList<>(Arrays.asList(5,6,7,8)));
-        list.add(new ArrayList<>(Arrays.asList(9,10,11,12)));
-        list.add(new ArrayList<>(Arrays.asList(13,14,15,16)));
+        list.add(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
+        list.add(new ArrayList<>(Arrays.asList(5, 6, 7, 8)));
+        list.add(new ArrayList<>(Arrays.asList(9, 10, 11, 12)));
+        list.add(new ArrayList<>(Arrays.asList(13, 14, 15, 16)));
         instance.rotate(list);
     }
 }

@@ -25,7 +25,7 @@ public class PowerFunction {
 
     public static void main(String[] args) {
         PowerFunction instance = new PowerFunction();
-        System.out.println(instance.pow(11,3,25));
-        System.out.println(instance.pow(11,4,25));
+        System.out.println(instance.pow(11, 3, 25));
+        System.out.println(instance.pow(11, 4, 25));
     }
 }

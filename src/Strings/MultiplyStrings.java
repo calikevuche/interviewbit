@@ -13,8 +13,8 @@ public class MultiplyStrings {
         String result = "";
         char[] charsB = b.toCharArray();
         for (int i = 0; i < b.length(); i++) {
-            int indexB = b.length()-1-i;
-            String s = multiply(a, charsB[indexB]-'0');
+            int indexB = b.length() - 1 - i;
+            String s = multiply(a, charsB[indexB] - '0');
             if (i == 0) {
                 result = s;
             } else {
@@ -29,7 +29,7 @@ public class MultiplyStrings {
         char[] chars = a.toCharArray();
         int carry = 0, value;
         for (int i = 0; i < chars.length; i++) {
-            int digit = chars[chars.length-i-1] - '0';
+            int digit = chars[chars.length - i - 1] - '0';
             value = (digit * num + carry) % 10;
             carry = (digit * num + carry) / 10;
             result.insert(0, value);
@@ -42,17 +42,17 @@ public class MultiplyStrings {
         StringBuilder result = new StringBuilder();
         char[] charsA = a.toCharArray();
         char[] charsB = b.toCharArray();
-        int maxLength = Math.max(a.length(), b.length()+offset);
+        int maxLength = Math.max(a.length(), b.length() + offset);
         int carry = 0, value;
         for (int i = 0; i < maxLength; i++) {
             if (i < offset) {
-                int digitA = charsA[a.length()-i-1]-'0';
+                int digitA = charsA[a.length() - i - 1] - '0';
                 result.insert(0, digitA);
             } else {
-                int indexA = a.length()-1-i;
-                int indexB = b.length()-i+offset-1;
-                int digitA = indexA < 0 ? 0 : charsA[indexA]-'0';
-                int digitB = indexB < 0 ? 0 : charsB[indexB]-'0';
+                int indexA = a.length() - 1 - i;
+                int indexB = b.length() - i + offset - 1;
+                int digitA = indexA < 0 ? 0 : charsA[indexA] - '0';
+                int digitB = indexB < 0 ? 0 : charsB[indexB] - '0';
                 value = (digitA + digitB + carry) % 10;
                 carry = (digitA + digitB + carry) / 10;
                 result.insert(0, value);

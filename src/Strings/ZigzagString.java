@@ -9,15 +9,15 @@ public class ZigzagString {
         if (b == 1) return a;
         String result = "";
         char[] chars = a.toCharArray();
-        int T = (b-1)*2, T1, T2;
+        int T = (b - 1) * 2, T1, T2;
         for (int i = 0; i < b; i++) {
-            if (i == 0 || i == b-1) {
-                for (int j = i; j < a.length(); j+=T) {
+            if (i == 0 || i == b - 1) {
+                for (int j = i; j < a.length(); j += T) {
                     result += chars[j];
                 }
             } else {
-                T1 = (b-1-i)*2;
-                T2 = (i)*2;
+                T1 = (b - 1 - i) * 2;
+                T2 = (i) * 2;
                 boolean second = false;
                 for (int j = i; j < a.length(); ) {
                     result += chars[j];

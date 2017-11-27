@@ -12,9 +12,12 @@ public class SpiralOrderMatrixOne {
     // DO NOT MODIFY THE LIST
     public ArrayList<Integer> spiralOrder(final List<ArrayList<Integer>> A) {
         ArrayList<Integer> result = new ArrayList<Integer>();
-        int m  = A.size(); // rows
+        int m = A.size(); // rows
         int n = A.get(0).size(); // columns
-        int T = 0; int B = m - 1; int L = 0; int R = n - 1;
+        int T = 0;
+        int B = m - 1;
+        int L = 0;
+        int R = n - 1;
         int dir = 0; // 0 - right, 1 - down, 2 - left, 3 - up
 
         while (T <= B && L <= R) {
@@ -48,10 +51,10 @@ public class SpiralOrderMatrixOne {
     public static void main(String[] args) {
         SpiralOrderMatrixOne instance = new SpiralOrderMatrixOne();
 
-        List <ArrayList<Integer>> inputMatrix = new ArrayList<>();
-        inputMatrix.add(new ArrayList<>(Arrays.asList(1,2,3,4)));
-        inputMatrix.add(new ArrayList<>(Arrays.asList(5,6,7,8)));
-        inputMatrix.add(new ArrayList<>(Arrays.asList(9,10,11,12)));
+        List<ArrayList<Integer>> inputMatrix = new ArrayList<>();
+        inputMatrix.add(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
+        inputMatrix.add(new ArrayList<>(Arrays.asList(5, 6, 7, 8)));
+        inputMatrix.add(new ArrayList<>(Arrays.asList(9, 10, 11, 12)));
 
         System.out.println(instance.spiralOrder(inputMatrix));
     }

@@ -19,7 +19,7 @@ public class ArrayBug {
 
     public static void main(String[] args) {
         ArrayBug instance = new ArrayBug();
-        ArrayList<Integer> inputArray = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
+        ArrayList<Integer> inputArray = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         System.out.println(instance.rotateArray(inputArray, 1));
     }
 }

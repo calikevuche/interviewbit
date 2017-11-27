@@ -11,21 +11,21 @@ public class ThreeSum {
 
     // bad version
     public int threeSumClosest1(ArrayList<Integer> a, int b) {
-        long sum = a.get(0)+a.get(1)+a.get(2);
+        long sum = a.get(0) + a.get(1) + a.get(2);
         for (int i = 0; i < a.size(); i++) {
             long num1 = a.get(i);
             for (int j = 0; j < a.size(); j++) {
                 long num2 = a.get(j);
                 for (int k = 0; k < a.size(); k++) {
                     long num3 = a.get(k);
-                    long tempSum = num1+num2+num3;
-                    if (i != j && j != k && i != k && tempSum == b){
-                        System.out.println("["+num1+" "+num2+" "+num3+"]");
+                    long tempSum = num1 + num2 + num3;
+                    if (i != j && j != k && i != k && tempSum == b) {
+                        System.out.println("[" + num1 + " " + num2 + " " + num3 + "]");
                         return (int) tempSum;
                     }
-                    if (i != j && j != k && i != k && Math.abs(tempSum-b) < Math.abs(sum-b)) {
+                    if (i != j && j != k && i != k && Math.abs(tempSum - b) < Math.abs(sum - b)) {
                         sum = tempSum;
-                        System.out.println("["+num1+" "+num2+" "+num3+"]");
+                        System.out.println("[" + num1 + " " + num2 + " " + num3 + "]");
                     }
                 }
             }
@@ -36,12 +36,12 @@ public class ThreeSum {
     // better version
     public int threeSumClosest(ArrayList<Integer> a, int b) {
         Collections.sort(a);
-        int bestSum = a.get(0)+a.get(1)+a.get(2);
+        int bestSum = a.get(0) + a.get(1) + a.get(2);
         int target = b;
 
         loop1:
-        for (int i = 0; i < a.size()-2; i++) {
-            int left = i+1, right = a.size()-1;
+        for (int i = 0; i < a.size() - 2; i++) {
+            int left = i + 1, right = a.size() - 1;
             while (left < right) {
                 int sum = a.get(i) + a.get(left) + a.get(right);
                 if (Math.abs(sum - target) < Math.abs(bestSum - target)) bestSum = sum;

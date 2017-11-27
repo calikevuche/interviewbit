@@ -23,16 +23,16 @@ public class SlidingWindowMax {
             queue.add(0, i);
         }
         for (int i = b; i < a.size(); i++) {
-            maxValues.add(a.get(queue.get(queue.size()-1)));
+            maxValues.add(a.get(queue.get(queue.size() - 1)));
             while (!queue.isEmpty() && a.get(queue.get(0)) <= a.get(i)) {
                 queue.remove(0);
             }
-            while (!queue.isEmpty() && (i >= queue.get(queue.size()-1) + b)) {
-                queue.remove(queue.size()-1);
+            while (!queue.isEmpty() && (i >= queue.get(queue.size() - 1) + b)) {
+                queue.remove(queue.size() - 1);
             }
             queue.add(0, i);
         }
-        maxValues.add(a.get(queue.get(queue.size()-1)));
+        maxValues.add(a.get(queue.get(queue.size() - 1)));
         return maxValues;
     }
 
@@ -46,7 +46,7 @@ public class SlidingWindowMax {
 
     public static void main(String[] args) {
         SlidingWindowMax instance = new SlidingWindowMax();
-        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ));
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(10, 9, 8, 7, 6, 5, 4, 3, 2, 1));
         instance.slidingMaximum(list, 2);
     }
 }

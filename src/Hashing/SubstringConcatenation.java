@@ -24,13 +24,13 @@ public class SubstringConcatenation {
         int len = b.get(0).length();
         StringBuilder sb = new StringBuilder(a);
         String sub = "";
-        for (int i = 0; i < sb.length(); i ++) {
+        for (int i = 0; i < sb.length(); i++) {
             words.clear();
             words.putAll(original);
-            for (int j = i; j <= sb.length()-len; j += len) {
-                sub = sb.substring(j, j+len);
+            for (int j = i; j <= sb.length() - len; j += len) {
+                sub = sb.substring(j, j + len);
                 if (words.containsKey(sub) && words.get(sub) > 0) {
-                    words.put(sub, words.get(sub)-1);
+                    words.put(sub, words.get(sub) - 1);
                     if (isEmpty(words)) {
                         result.add(i);
                         break;
@@ -55,7 +55,7 @@ public class SubstringConcatenation {
 
     public static void main(String[] args) {
         SubstringConcatenation substringConcatenation = new SubstringConcatenation();
-        substringConcatenation.findSubstring("barfoothefoobarman", new ArrayList<>(Arrays.asList("foo","bar")));
+        substringConcatenation.findSubstring("barfoothefoobarman", new ArrayList<>(Arrays.asList("foo", "bar")));
         substringConcatenation.findSubstring("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", new ArrayList<>(Arrays.asList("aaa", "aaa", "aaa", "aaa", "aaa")));
     }
 }

@@ -35,7 +35,7 @@ public class TwoSum {
             }
         }
 
-        return (id1 != - 1 && id2 != -1) ? new ArrayList<Integer>(Arrays.asList(id1+1,id2+1)) : new ArrayList<Integer>();
+        return (id1 != -1 && id2 != -1) ? new ArrayList<>(Arrays.asList(id1 + 1, id2 + 1)) : new ArrayList<>();
     }
 
     public static void main(String[] args) {
@@ -43,7 +43,7 @@ public class TwoSum {
 //        ArrayList<Integer> list = twoSum.twoSum(Arrays.asList(2, 7, 11, 15), 9);
 //        ArrayList<Integer> list2 = twoSum.twoSum(Arrays.asList(2, -7, 11, 15), -5);
 //        ArrayList<Integer> list3 = twoSum.twoSum(Arrays.asList(2, -7, -11, 15), -18);
-        ArrayList<Integer> list4 = twoSum.twoSum(Arrays.asList(4, 7, -4, 2, 2, 2, 3, -5, -3, 9, -4, 9, -7, 7, -1, 9, 9, 4, 1, -4, -2, 3, -3, -5, 4, -7, 7, 9, -4, 4, -8 ), -3);
+        ArrayList<Integer> list4 = twoSum.twoSum(Arrays.asList(4, 7, -4, 2, 2, 2, 3, -5, -3, 9, -4, 9, -7, 7, -1, 9, 9, 4, 1, -4, -2, 3, -3, -5, 4, -7, 7, 9, -4, 4, -8), -3);
 //        System.out.println(list);
 //        System.out.println(list2);
 //        System.out.println(list3);

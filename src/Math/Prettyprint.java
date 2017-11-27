@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Prettyprint {
 
     public ArrayList<ArrayList<Integer>> prettyPrint(int a) {
-        int size = 2 * a  - 1;
+        int size = 2 * a - 1;
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             ArrayList<Integer> arrayList = new ArrayList<>();
@@ -18,7 +18,7 @@ public class Prettyprint {
             }
             result.add(arrayList);
         }
-        int l = 0, r = size-1, b = size-1, t = 0;
+        int l = 0, r = size - 1, b = size - 1, t = 0;
         int number = a;
         while (l != r || b != t) {
             for (int i = l; i <= r; i++) {

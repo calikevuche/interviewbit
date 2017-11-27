@@ -32,24 +32,24 @@ public class FindDuplicateInArray {
         int n = a.size(); // elements 1 .. n-1
         if (n < 2) return -1;
         if (n == 2) return 1;
-        int range = (int) Math.sqrt(n-1);
-        if (range * range < n-1) range++;
+        int range = (int) Math.sqrt(n - 1);
+        if (range * range < n - 1) range++;
         List<Integer> count = new ArrayList<>();
         for (int i = 0; i <= range; i++) {
             count.add(0);
         }
         for (int i = 0; i < n; i++) {
-            int index = (a.get(i)-1) / range;
+            int index = (a.get(i) - 1) / range;
             int value = count.get(index);
             count.set(index, ++value);
         }
         int repeatingRange = -1;
-        int numRanges = (n-1 - 1) / range + 1;
+        int numRanges = (n - 1 - 1) / range + 1;
         for (int i = 0; i < numRanges && repeatingRange == -1; i++) {
-            if (i < numRanges - 1 || (n-1) % range == 0) {
+            if (i < numRanges - 1 || (n - 1) % range == 0) {
                 if (count.get(i) > range) repeatingRange = i;
             } else {
-                if (count.get(i) > (n-1) % range) repeatingRange = i;
+                if (count.get(i) > (n - 1) % range) repeatingRange = i;
             }
         }
         if (repeatingRange == -1) return -1;
@@ -75,7 +75,7 @@ public class FindDuplicateInArray {
 
     public static void main(String[] args) {
         FindDuplicateInArray ins = new FindDuplicateInArray();
-        System.out.println(ins.repeatedNumber(Arrays.asList(3,4,1,4,1)));
-        System.out.println(ins.repeatedNumber(Arrays.asList(4,7,1,8,6,2,4,3,5)));
+        System.out.println(ins.repeatedNumber(Arrays.asList(3, 4, 1, 4, 1)));
+        System.out.println(ins.repeatedNumber(Arrays.asList(4, 7, 1, 8, 6, 2, 4, 3, 5)));
     }
 }

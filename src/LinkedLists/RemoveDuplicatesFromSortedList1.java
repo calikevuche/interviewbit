@@ -44,7 +44,6 @@ public class RemoveDuplicatesFromSortedList1 {
     }
 
 
-
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedList1 instance = new RemoveDuplicatesFromSortedList1();
         ListNode a1 = new ListNode(1);

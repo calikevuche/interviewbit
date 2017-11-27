@@ -8,16 +8,16 @@ public class PalindromeString {
     // :( Slow
     public int isPalindrome1(String a) {
         a = a.toLowerCase();
-        for (char c: a.toCharArray()) {
+        for (char c : a.toCharArray()) {
             if (c < '0' || (c > '9' && c < 'a') || c > 'z') {
-                a = a.replace(String.valueOf(c),"");
+                a = a.replace(String.valueOf(c), "");
             }
         }
         char[] chars = a.toCharArray();
         if (chars.length == 0) return 1;
         int n = chars.length - 1;
         for (int i = 0; i <= n / 2; i++) {
-            if (chars[i] != chars[n-i]) {
+            if (chars[i] != chars[n - i]) {
                 return 0;
             }
         }
@@ -27,15 +27,15 @@ public class PalindromeString {
     // Faster :)
     public int isPalindrome2(String a) {
         char[] chars = a.toLowerCase().toCharArray();
-        int left = getAlphaNumericPosition(chars, 0, chars.length-1, false);
+        int left = getAlphaNumericPosition(chars, 0, chars.length - 1, false);
         if (left == -1) return 1;
-        int right = getAlphaNumericPosition(chars, left+1, chars.length-1, true);
+        int right = getAlphaNumericPosition(chars, left + 1, chars.length - 1, true);
         if (right == -1) return 1;
         while (left < right) {
             if (chars[left] != chars[right]) return 0;
-            left = getAlphaNumericPosition(chars, left+1, right, false);
+            left = getAlphaNumericPosition(chars, left + 1, right, false);
             if (left == -1) return 1;
-            right = getAlphaNumericPosition(chars, left, right-1, true);
+            right = getAlphaNumericPosition(chars, left, right - 1, true);
             if (right == -1) return 1;
         }
         return 1;
@@ -44,11 +44,11 @@ public class PalindromeString {
     int getAlphaNumericPosition(char[] chars, int start, int end, boolean reverse) {
         if (reverse) {
             for (int i = end; i >= start; i--) {
-                if((chars[i] >= '0' && chars[i] <= '9') || (chars[i] >= 'a' && chars[i] <= 'z')) return i;
+                if ((chars[i] >= '0' && chars[i] <= '9') || (chars[i] >= 'a' && chars[i] <= 'z')) return i;
             }
         } else {
             for (int i = start; i <= end; i++) {
-                if((chars[i] >= '0' && chars[i] <= '9') || (chars[i] >= 'a' && chars[i] <= 'z')) return i;
+                if ((chars[i] >= '0' && chars[i] <= '9') || (chars[i] >= 'a' && chars[i] <= 'z')) return i;
             }
         }
 
@@ -64,7 +64,7 @@ public class PalindromeString {
         int n = sb.length() - 1;
         if (n == -1) return 1;
         for (int i = 0; i <= n / 2; i++) {
-            if (sb.charAt(i) != sb.charAt(n-i)) return 0;
+            if (sb.charAt(i) != sb.charAt(n - i)) return 0;
         }
         return 1;
     }

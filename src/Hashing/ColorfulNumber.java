@@ -14,7 +14,7 @@ public class ColorfulNumber {
         List<Integer> num = new ArrayList<>();
         while (a != 0) {
             int digit = a % 10;
-            num.add(0,digit);
+            num.add(0, digit);
             a = a / 10;
         }
         HashSet<Long> productSet = new HashSet<>();
@@ -22,12 +22,12 @@ public class ColorfulNumber {
         while (size < num.size()) {
             for (int i = 0; i < num.size(); i++) {
                 List<Integer> subset = new ArrayList<>();
-                if (i+size+1 > num.size()) continue;
-                for (int j = i; j < i+size+1; j++) {
+                if (i + size + 1 > num.size()) continue;
+                for (int j = i; j < i + size + 1; j++) {
                     subset.add(num.get(j));
                 }
                 long product = 1;
-                for (int digit: subset) {
+                for (int digit : subset) {
                     product *= digit;
                 }
                 boolean result = productSet.add(product);

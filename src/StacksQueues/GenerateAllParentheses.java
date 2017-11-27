@@ -10,12 +10,12 @@ public class GenerateAllParentheses {
     public int isValid(String a) {
         Stack stack = new Stack();
         char[] chars = a.toCharArray();
-        for (char c: chars) {
+        for (char c : chars) {
             if (c == '(' || c == '[' || c == '{') {
                 stack.push(c);
             } else {
                 if (stack.isEmpty()) return 0;
-                char lastOpened = (char)stack.pop();
+                char lastOpened = (char) stack.pop();
                 if (lastOpened != getOpened(c)) return 0;
             }
         }

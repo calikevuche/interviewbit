@@ -33,7 +33,7 @@ public class MergeIntervals {
             return intervals;
         }
         Interval firstInterval = intervals.get(0);
-        Interval lastInterval = intervals.get(intervals.size()-1);
+        Interval lastInterval = intervals.get(intervals.size() - 1);
         if (firstInterval.start > end) {
             intervals.add(0, newInterval);
             return intervals;
@@ -47,12 +47,12 @@ public class MergeIntervals {
             Interval currentInterval = intervals.get(i);
             int start1 = currentInterval.start;
             int end1 = currentInterval.end;
-            if (i+1 < intervals.size()) {
-                Interval nextInterval = intervals.get(i+1);
+            if (i + 1 < intervals.size()) {
+                Interval nextInterval = intervals.get(i + 1);
                 int start2 = nextInterval.start;
                 int end2 = nextInterval.end;
                 if (end1 < start && start2 > end) {
-                    intervals.add(i+1, newInterval);
+                    intervals.add(i + 1, newInterval);
                     return intervals;
                 }
             }
@@ -70,7 +70,7 @@ public class MergeIntervals {
         }
         overlapInterval.start = Math.min(start, intervals.get(firstIndex).start);
         overlapInterval.end = Math.max(end, intervals.get(lastIndex).end);
-        intervals.subList(firstIndex, lastIndex+1).clear();
+        intervals.subList(firstIndex, lastIndex + 1).clear();
         intervals.add(firstIndex, overlapInterval);
         return intervals;
     }
@@ -78,12 +78,12 @@ public class MergeIntervals {
     public static void main(String[] args) {
         MergeIntervals instance = new MergeIntervals();
         ArrayList<Interval> intervals = new ArrayList<Interval>();
-        intervals.add(new Interval(1,2));
-        intervals.add(new Interval(3,5));
-        intervals.add(new Interval(7,9));
-        intervals.add(new Interval(8,10));
-        intervals.add(new Interval(12,16));
-        instance.insert(intervals, new Interval(1,10));
+        intervals.add(new Interval(1, 2));
+        intervals.add(new Interval(3, 5));
+        intervals.add(new Interval(7, 9));
+        intervals.add(new Interval(8, 10));
+        intervals.add(new Interval(12, 16));
+        instance.insert(intervals, new Interval(1, 10));
     }
 
 }

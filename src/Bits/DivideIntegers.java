@@ -46,12 +46,12 @@ public class DivideIntegers {
 
     public static void main(String[] args) {
         DivideIntegers instance = new DivideIntegers();
-        System.out.println(instance.divide(5,2));
-        System.out.println(instance.divide(38,5));
-        System.out.println(instance.divide(-2147483647,1));
-        System.out.println(instance.divide(13,-1));
-        System.out.println(instance.divide(-2147483648,-1));
-        System.out.println(instance.divide(-1,1));
-        System.out.println(instance.divide(1,-1));
+        System.out.println(instance.divide(5, 2));
+        System.out.println(instance.divide(38, 5));
+        System.out.println(instance.divide(-2147483647, 1));
+        System.out.println(instance.divide(13, -1));
+        System.out.println(instance.divide(-2147483648, -1));
+        System.out.println(instance.divide(-1, 1));
+        System.out.println(instance.divide(1, -1));
     }
 }

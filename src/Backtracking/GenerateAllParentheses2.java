@@ -9,7 +9,7 @@ public class GenerateAllParentheses2 {
 
     public ArrayList<String> generateParenthesis(int a) {
         ArrayList<String> result = new ArrayList<>();
-        generateParenthesis(2*a, 2*a, result);
+        generateParenthesis(2 * a, 2 * a, result);
         return result;
     }
 
@@ -27,17 +27,17 @@ public class GenerateAllParentheses2 {
                 if (getOpenedNumber(s) == n) {
                     int newLength = s.length() + n;
                     while (s.length() < newLength) {
-                        s = s+")";
+                        s = s + ")";
                     }
                     list.remove(i);
                     list.add(i, s);
                     continue;
                 }
-                String s1 = s+"(";
+                String s1 = s + "(";
                 list.remove(i);
                 list.add(i, s1);
                 if (getOpenedNumber(s) > 0) {
-                    String s2 = s+")";
+                    String s2 = s + ")";
                     i++;
                     list.add(i, s2);
                 }

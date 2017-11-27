@@ -30,8 +30,8 @@ public class RepeatMissingNumberArray {
         }
 
         for (int i = 0; i < a.size(); i++) {
-            if (a.get(i) != i+1) {
-                B = i+1;
+            if (a.get(i) != i + 1) {
+                B = i + 1;
             }
         }
 
@@ -55,16 +55,16 @@ public class RepeatMissingNumberArray {
         for (int i = 0; i < a.size(); i++) {
             int value = a.get(i);
             sum += value;
-            sum -= i+1;
+            sum -= i + 1;
             squares += (long) value * (long) value;
-            squares -= (long) (i+1) * (long) (i+1);
+            squares -= (long) (i + 1) * (long) (i + 1);
         }
 
         A = 0.5 * (sum + squares / sum);
         B = squares / sum - A;
 
-        result.add((int)A);
-        result.add((int)B);
+        result.add((int) A);
+        result.add((int) B);
         return result;
     }
 

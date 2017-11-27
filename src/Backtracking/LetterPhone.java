@@ -5,8 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by OlehKa on 06.11.2016.
  */
-public class LetterPhone
-{
+public class LetterPhone {
 
     public ArrayList<String> letterCombinations(String a) {
         if (a.length() == 0) {
@@ -17,10 +16,10 @@ public class LetterPhone
         }
         ArrayList<String> res = new ArrayList<>();
         String firstDigit = String.valueOf(a.charAt(0));
-        for (String s1: getMapping(firstDigit)) {
+        for (String s1 : getMapping(firstDigit)) {
             ArrayList<String> combinations = letterCombinations(a.substring(1));
-            for (String s2: combinations) {
-                res.add(s1+s2);
+            for (String s2 : combinations) {
+                res.add(s1 + s2);
             }
         }
         return res;

@@ -17,7 +17,7 @@ public class ReverseString {
                 if (left == -1) left = i;
             } else if (left != -1) {
                 right = i;
-                word = a.substring(left, right)+" ";
+                word = a.substring(left, right) + " ";
                 result.insert(0, word);
                 left = -1;
                 right = -1;
@@ -25,10 +25,10 @@ public class ReverseString {
             i++;
         }
         if (left != -1) {
-            word = a.substring(left)+" ";
+            word = a.substring(left) + " ";
             result.insert(0, word);
         }
-        int lastIndex = result.length()-1;
+        int lastIndex = result.length() - 1;
         if (lastIndex >= 0 && result.charAt(lastIndex) == ' ') {
             result.deleteCharAt(lastIndex);
         }

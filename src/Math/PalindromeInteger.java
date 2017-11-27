@@ -9,7 +9,7 @@ public class PalindromeInteger {
         if (a < 0) return false;
         String reversed = "";
         for (char digit : Integer.toString(a).toCharArray()) {
-            reversed = digit+reversed;
+            reversed = digit + reversed;
         }
         if (Long.parseLong(reversed) > Integer.MAX_VALUE) return false;
         return Integer.parseInt(reversed) == a;

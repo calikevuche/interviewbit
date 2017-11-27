@@ -12,20 +12,20 @@ public class SetMatrixZeros {
         int n = a.size(); // rows count
         int m = a.get(0).size(); // columns count
         ArrayList<Integer> MN = new ArrayList<>();
-        for (int k = 0; k < m+n; k++) {
+        for (int k = 0; k < m + n; k++) {
             MN.add(k, 1);
         }
         for (int i = 0; i < a.size(); i++) {
             for (int j = 0; j < a.get(i).size(); j++) {
                 if (a.get(i).get(j) == 0) {
                     MN.set(i, 0);
-                    MN.set(n+j, 0);
+                    MN.set(n + j, 0);
                 }
             }
         }
         for (int i = 0; i < a.size(); i++) {
             for (int j = 0; j < a.get(i).size(); j++) {
-                if (MN.get(i) == 0 || MN.get(n+j) == 0) {
+                if (MN.get(i) == 0 || MN.get(n + j) == 0) {
                     a.get(i).set(j, 0);
                 }
             }
@@ -146,8 +146,8 @@ public class SetMatrixZeros {
     public static void main(String[] args) {
         SetMatrixZeros instance = new SetMatrixZeros();
         ArrayList<ArrayList<Integer>> matrix = new ArrayList<>();
-        matrix.add(new ArrayList<>(Arrays.asList(0,0)));
-        matrix.add(new ArrayList<>(Arrays.asList(1,1)));
+        matrix.add(new ArrayList<>(Arrays.asList(0, 0)));
+        matrix.add(new ArrayList<>(Arrays.asList(1, 1)));
         instance.setZeroes3(matrix);
     }
 }

@@ -14,7 +14,7 @@ public class Equal {
         ArrayList<Integer> res = new ArrayList<>();
         HashMap<Long, ArrayList<Integer>> map = new HashMap<>();
         for (int i = 0; i < a.size(); i++) {
-            for (int j = i+1; j < a.size(); j++) {
+            for (int j = i + 1; j < a.size(); j++) {
                 long sum = a.get(i) + a.get(j);
                 if (map.containsKey(sum)) {
                     List<Integer> list = map.get(sum);
@@ -41,7 +41,7 @@ public class Equal {
                         }
                     }
                 } else {
-                    map.put(sum, new ArrayList<>(Arrays.asList(i,j)));
+                    map.put(sum, new ArrayList<>(Arrays.asList(i, j)));
                 }
             }
         }

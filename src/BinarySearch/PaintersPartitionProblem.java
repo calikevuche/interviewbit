@@ -37,7 +37,7 @@ public class PaintersPartitionProblem {
             }
         }
 
-        long ans = (long)right * (long)b % 10000003;
+        long ans = (long) right * (long) b % 10000003;
 
         return (int) ans;
     }

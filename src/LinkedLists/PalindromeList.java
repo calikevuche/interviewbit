@@ -8,9 +8,9 @@ public class PalindromeList {
     public int lPalin(ListNode A) {
         ListNode firstE = A;
         int lenA = getLength(A);
-        int middleE = (lenA % 2 == 0) ? lenA/2+1 : lenA/2+2;
+        int middleE = (lenA % 2 == 0) ? lenA / 2 + 1 : lenA / 2 + 2;
         int counter = 0;
-        while (counter < middleE-1) {
+        while (counter < middleE - 1) {
             A = A.next;
             counter++;
         }

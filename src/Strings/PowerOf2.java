@@ -27,7 +27,7 @@ public class PowerOf2 {
     }
 
     boolean isEven(String str) {
-        char c = str.charAt(str.length()-1);
+        char c = str.charAt(str.length() - 1);
         int i = c - '0';
         return i % 2 == 0;
     }

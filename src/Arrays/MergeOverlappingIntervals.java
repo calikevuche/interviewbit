@@ -18,29 +18,29 @@ public class MergeOverlappingIntervals {
         }
     }
 
-     public static class Interval {
-         int start;
-         int end;
+    public static class Interval {
+        int start;
+        int end;
 
-         Interval() {
-             start = 0;
-             end = 0;
-         }
+        Interval() {
+            start = 0;
+            end = 0;
+        }
 
-         Interval(int s, int e) {
-             start = s;
-             end = e;
-         }
-     }
+        Interval(int s, int e) {
+            start = s;
+            end = e;
+        }
+    }
 
     public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
         Collections.sort(intervals, new MyComparator());
         for (int i = 0; i < intervals.size() - 1; i++) {
             Interval currentI = intervals.get(i);
-            Interval nextI = intervals.get(i+1);
+            Interval nextI = intervals.get(i + 1);
             if (currentI.end >= nextI.start) {
                 currentI.end = Math.max(currentI.end, nextI.end);
-                intervals.remove(i+1);
+                intervals.remove(i + 1);
                 i--;
             }
         }
@@ -50,10 +50,10 @@ public class MergeOverlappingIntervals {
     public static void main(String[] args) {
         MergeOverlappingIntervals instance = new MergeOverlappingIntervals();
         ArrayList<Interval> intervals = new ArrayList<Interval>();
-        intervals.add(new Interval(10,10));
-        intervals.add(new Interval(1,10));
-        intervals.add(new Interval(3,8));
-        intervals.add(new Interval(6,6));
+        intervals.add(new Interval(10, 10));
+        intervals.add(new Interval(1, 10));
+        intervals.add(new Interval(3, 8));
+        intervals.add(new Interval(6, 6));
         instance.merge(intervals);
     }
 }

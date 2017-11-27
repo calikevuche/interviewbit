@@ -27,10 +27,10 @@ public class Array2D {
 
     public static void main(String[] args) {
         Array2D instance = new Array2D();
-        ArrayList <ArrayList<Integer>> A = new ArrayList<>();
-        A.add(new ArrayList<>(Arrays.asList(1,2,3,4)));
-        A.add(new ArrayList<>(Arrays.asList(5,6,7,8)));
-        A.add(new ArrayList<>(Arrays.asList(9,10,11,12)));
+        ArrayList<ArrayList<Integer>> A = new ArrayList<>();
+        A.add(new ArrayList<>(Arrays.asList(1, 2, 3, 4)));
+        A.add(new ArrayList<>(Arrays.asList(5, 6, 7, 8)));
+        A.add(new ArrayList<>(Arrays.asList(9, 10, 11, 12)));
 
         ArrayList<ArrayList<Integer>> B = instance.performOps(A);
         for (int i = 0; i < B.size(); i++) {

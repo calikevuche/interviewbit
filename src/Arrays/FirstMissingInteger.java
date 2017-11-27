@@ -14,7 +14,7 @@ public class FirstMissingInteger {
         int minValue = 1;
         boolean allNegative = true;
         for (int i = 0; i < a.size(); i++) {
-            if (a.get(i) > 0 ) {
+            if (a.get(i) > 0) {
                 allNegative = false;
                 if (a.get(i) > minValue) {
                     return minValue;

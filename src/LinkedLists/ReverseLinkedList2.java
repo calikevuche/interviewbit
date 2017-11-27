@@ -13,13 +13,13 @@ public class ReverseLinkedList2 {
         ListNode endRev = null;
         int i = 0;
         if (m > 1) result = a;
-        while (i < m-1) {
-            if (i == m-2) startRev = a;
+        while (i < m - 1) {
+            if (i == m - 2) startRev = a;
             a = a.next;
             i++;
         }
         while (i < n) {
-            if (i == m-1) endRev = a;
+            if (i == m - 1) endRev = a;
             next = a.next;
             a.next = prev;
             prev = a;

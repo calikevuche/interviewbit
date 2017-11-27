@@ -62,7 +62,7 @@ public class RearrangeArray {
     public static void main(String[] args) {
         RearrangeArray instance = new RearrangeArray();
 //        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1,0,0));
-        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1,3,4,0,2));
+        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(1, 3, 4, 0, 2));
         instance.arrange(arrayList);
         System.out.println(arrayList);
     }

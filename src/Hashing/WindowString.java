@@ -16,13 +16,13 @@ public class WindowString {
         char[] charsS = S.toCharArray();
         char[] charsT = T.toCharArray();
         int val;
-        for (char c: charsT) {
+        for (char c : charsT) {
             if (original.containsKey(c)) {
                 val = original.get(c);
             } else {
                 val = 0;
             }
-            original.put(c, val+1);
+            original.put(c, val + 1);
         }
         HashMap<Character, Integer> copy = new HashMap<>(original);
         while (start <= charsS.length - charsT.length) {
@@ -31,21 +31,21 @@ public class WindowString {
                     search = true;
                     val = copy.get(charsS[start]);
                     if (val <= 1) copy.remove(charsS[start]);
-                    else copy.put(charsS[start], val-1);
-                    end = start+1;
+                    else copy.put(charsS[start], val - 1);
+                    end = start + 1;
                 } else {
                     start++;
                 }
-            } else  {
+            } else {
                 if (copy.containsKey(charsS[end])) {
                     val = copy.get(charsS[end]);
                     if (val <= 1) copy.remove(charsS[end]);
-                    else copy.put(charsS[end], val-1);
+                    else copy.put(charsS[end], val - 1);
                 }
                 end++;
             }
             if (copy.isEmpty()) {
-                if ((minS == -1 && minE == -1) || (end - start < minE - minS)){
+                if ((minS == -1 && minE == -1) || (end - start < minE - minS)) {
                     minS = start;
                     minE = end;
                 }
@@ -62,22 +62,22 @@ public class WindowString {
 
     public String minWindow102(String S, String T) {
         List<Character> list1 = new ArrayList<>();
-        for (char c: S.toCharArray()) {
+        for (char c : S.toCharArray()) {
             list1.add(c);
         }
         List<Character> list2 = new ArrayList<>();
-        for (char c: T.toCharArray()) {
+        for (char c : T.toCharArray()) {
             list2.add(c);
         }
-        int start = 0, end = start+1;
+        int start = 0, end = start + 1;
         int m1 = -1, m2 = -1;
-        if (containsAll(list1.subList(start,end), list2)) {
+        if (containsAll(list1.subList(start, end), list2)) {
             m1 = start;
             m2 = end;
         }
 
         while (start < list1.size() - list2.size() && end <= list1.size()) {
-            if (end - start >= list2.size() && containsAll(list1.subList(start,end), list2)) {
+            if (end - start >= list2.size() && containsAll(list1.subList(start, end), list2)) {
                 if ((m1 == -1 && m2 == -1) || (end - start < m2 - m1)) {
                     m1 = start;
                     m2 = end;
@@ -93,8 +93,8 @@ public class WindowString {
 
     public boolean containsAll(List<Character> li1, List<Character> li2) {
         List<Character> copy = new ArrayList<>(li1);
-        for (Character c: li2) {
-            if (copy.contains(c)){
+        for (Character c : li2) {
+            if (copy.contains(c)) {
                 copy.remove(c);
             } else {
                 return false;
@@ -110,9 +110,9 @@ public class WindowString {
         char[] arrayS = S.toCharArray();
         char[] arrayT = T.toCharArray();
 
-        for (Character c: arrayT) {
+        for (Character c : arrayT) {
             if (map.containsKey(c)) {
-                map.put(c, map.get(c)+1);
+                map.put(c, map.get(c) + 1);
             } else {
                 map.put(c, 1);
             }
@@ -133,21 +133,21 @@ public class WindowString {
                         minRight = right;
                     }
                     left++;
-                    if (map.containsKey(arrayS[left-1])) {
-                        int val = map.get(arrayS[left-1]) + 1;
-                        map.put(arrayS[left-1], val);
+                    if (map.containsKey(arrayS[left - 1])) {
+                        int val = map.get(arrayS[left - 1]) + 1;
+                        map.put(arrayS[left - 1], val);
                         if (val > 0) break;
                     }
                 }
             }
         }
 
-        return (minLeft == -1) ? "" : S.substring(minLeft,minRight);
+        return (minLeft == -1) ? "" : S.substring(minLeft, minRight);
     }
 
-    public boolean isEmpty(HashMap<Character,Integer> map){
-        for (Character c: map.keySet()) {
-            if (map.get(c) > 0)  {
+    public boolean isEmpty(HashMap<Character, Integer> map) {
+        for (Character c : map.keySet()) {
+            if (map.get(c) > 0) {
                 return false;
             }
         }

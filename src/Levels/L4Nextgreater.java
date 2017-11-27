@@ -12,7 +12,7 @@ public class L4Nextgreater {
         ArrayList<Integer> result = new ArrayList<>();
         if (a.size() == 0) return result;
         Stack<Integer> stack = new Stack<>();
-        for (int i = a.size()-1; i >= 0; i--) {
+        for (int i = a.size() - 1; i >= 0; i--) {
             int element = a.get(i);
             while (!stack.isEmpty() && stack.peek() <= element) {
                 stack.pop();

@@ -18,10 +18,10 @@ public class ImplementStrStr {
                 }
             }
             if (firstIdx != -1) {
-                if (haystackChars[i] != needleChars[i-firstIdx]) {
+                if (haystackChars[i] != needleChars[i - firstIdx]) {
                     i = firstIdx;
                     firstIdx = -1;
-                } else if (i - firstIdx == needleChars.length-1) {
+                } else if (i - firstIdx == needleChars.length - 1) {
                     return firstIdx;
                 }
             }
@@ -32,10 +32,10 @@ public class ImplementStrStr {
 
     public static void main(String[] args) {
         ImplementStrStr instance = new ImplementStrStr();
-        System.out.println(instance.strStr("abba","ba"));
-        System.out.println(instance.strStr("abba","baa"));
-        System.out.println(instance.strStr("","baa"));
-        System.out.println(instance.strStr("",""));
-        System.out.println(instance.strStr("b","b"));
+        System.out.println(instance.strStr("abba", "ba"));
+        System.out.println(instance.strStr("abba", "baa"));
+        System.out.println(instance.strStr("", "baa"));
+        System.out.println(instance.strStr("", ""));
+        System.out.println(instance.strStr("b", "b"));
     }
 }

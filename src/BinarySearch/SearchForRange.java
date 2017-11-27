@@ -13,10 +13,10 @@ public class SearchForRange {
     public ArrayList<Integer> searchRange(final List<Integer> a, int b) {
         int resLeft, resRight;
 
-        resLeft = getResult(a, 0, a.size()-1, b, true);
-        resRight = getResult(a, 0, a.size()-1, b, false);
+        resLeft = getResult(a, 0, a.size() - 1, b, true);
+        resRight = getResult(a, 0, a.size() - 1, b, false);
 
-        return new ArrayList<>(Arrays.asList(resLeft,resRight));
+        return new ArrayList<>(Arrays.asList(resLeft, resRight));
     }
 
     public int getResult(final List<Integer> a, int start, int end, int b, boolean isLeft) {
@@ -30,11 +30,9 @@ public class SearchForRange {
                 } else {
                     start = mid + 1;
                 }
-            }
-            else if (b < a.get(mid)) {
+            } else if (b < a.get(mid)) {
                 end = mid - 1;
-            }
-            else if (b > a.get(mid)) {
+            } else if (b > a.get(mid)) {
                 start = mid + 1;
             }
         }
@@ -43,8 +41,8 @@ public class SearchForRange {
 
     public static void main(String[] args) {
         SearchForRange instance = new SearchForRange();
-        System.out.println(instance.searchRange(Arrays.asList(5,7,7,8,8,10), 8));
-        System.out.println(instance.searchRange(Arrays.asList(8,8), 7));
+        System.out.println(instance.searchRange(Arrays.asList(5, 7, 7, 8, 8, 10), 8));
+        System.out.println(instance.searchRange(Arrays.asList(8, 8), 7));
         System.out.println(instance.searchRange(Arrays.asList(), 7));
     }
 }

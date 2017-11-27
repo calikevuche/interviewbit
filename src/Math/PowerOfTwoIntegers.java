@@ -21,7 +21,7 @@ public class PowerOfTwoIntegers {
         if (factors.size() >= 2 && Objects.equals(factors.get(0), factors.get(factors.size() - 1))) {
             return true;
         }
-        System.out.println("a="+a+" "+factors);
+        System.out.println("a=" + a + " " + factors);
 
         int minNum = 0;
         int num = 0;

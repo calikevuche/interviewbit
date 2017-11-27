@@ -13,8 +13,8 @@ public class SortingAlgorithms {
     void mergeSortAlgo(List<Integer> array) {
         int n = array.size();
         if (n == 1) return;
-        List<Integer> left = new ArrayList<>(array).subList(0, n/2);
-        List<Integer> right = new ArrayList<>(array).subList(n/2, n);
+        List<Integer> left = new ArrayList<>(array).subList(0, n / 2);
+        List<Integer> right = new ArrayList<>(array).subList(n / 2, n);
         mergeSortAlgo(left);
         mergeSortAlgo(right);
         merge(left, right, array);
@@ -24,7 +24,7 @@ public class SortingAlgorithms {
     void merge(List<Integer> left, List<Integer> right, List<Integer> result) {
         int i = 0, j = 0, k = 0; // i -left, j - right, k - result
         while (i < left.size() && j < right.size()) {
-            if(left.get(i) > right.get(j)) {
+            if (left.get(i) > right.get(j)) {
                 result.set(k, right.get(j));
                 j++;
             } else {
@@ -68,13 +68,13 @@ public class SortingAlgorithms {
         int temp = array.get(pIndex);
         array.set(pIndex, pivot);
         array.set(end, temp);
-        System.out.println("==>"+new ArrayList<>(array).subList(start, end + 1));
+        System.out.println("==>" + new ArrayList<>(array).subList(start, end + 1));
         return pIndex;
     }
 
     public static void main(String[] args) {
         SortingAlgorithms instance = new SortingAlgorithms();
-        List<Integer> list = Arrays.asList(3,5,2,6,1,7,9,4);
+        List<Integer> list = Arrays.asList(3, 5, 2, 6, 1, 7, 9, 4);
 //        instance.mergeSortAlgo(list);
         instance.quickSotrAlgo(list, 0, list.size() - 1);
         System.out.println(list);

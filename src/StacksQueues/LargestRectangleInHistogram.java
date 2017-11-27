@@ -79,7 +79,7 @@ public class LargestRectangleInHistogram {
         return maxArea;
     }
 
-    private int maxWidth (LinkedList<Integer> list) {
+    private int maxWidth(LinkedList<Integer> list) {
         if (list.isEmpty()) return 0;
         int prev = list.pollFirst();
         int maxWidth = 1;

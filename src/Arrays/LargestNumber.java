@@ -29,7 +29,7 @@ public class LargestNumber {
         Collections.sort(sortedList, LARGEST_ORDER_SIMPLE);
         StringBuilder stringBuilder = new StringBuilder();
         boolean isZero = true;
-        for(Integer value: sortedList) {
+        for (Integer value : sortedList) {
             if (isZero && value != 0) isZero = false;
             stringBuilder.append(value);
         }

@@ -11,7 +11,8 @@ public class MedianOfArray {
 
     // DO NOT MODIFY BOTH THE LISTS
     public double findMedianSortedArrays(final List<Integer> a, final List<Integer> b) {
-        int m = a.size(); int n = b.size();
+        int m = a.size();
+        int n = b.size();
         if (m > n) {
             return findMedianSortedArrays(b, a);
         }
@@ -22,18 +23,18 @@ public class MedianOfArray {
         while (iMin <= iMax) {
             int i = (iMin + iMax) / 2;
             int j = (m + n + 1) / 2 - i;
-            if (i > 0 && j < n && a.get(i-1) > b.get(j)) {
+            if (i > 0 && j < n && a.get(i - 1) > b.get(j)) {
                 iMax = i - 1;
-            } else if (j > 0 && i < m && b.get(j-1) > a.get(i)) {
+            } else if (j > 0 && i < m && b.get(j - 1) > a.get(i)) {
                 iMin = i + 1;
             } else {
                 int value1, value2;
                 if (i == 0) {
-                    value1 = b.get(j-1);
+                    value1 = b.get(j - 1);
                 } else if (j == 0) {
-                    value1 = a.get(i-1);
+                    value1 = a.get(i - 1);
                 } else {
-                    value1 = Math.max(a.get(i-1), b.get(j-1));
+                    value1 = Math.max(a.get(i - 1), b.get(j - 1));
                 }
                 if ((m + n) % 2 == 1) {
                     return value1;
@@ -45,7 +46,7 @@ public class MedianOfArray {
                     } else {
                         value2 = Math.min(a.get(i), b.get(j));
                     }
-                    return ((double)value1 + (double)value2) / 2;
+                    return ((double) value1 + (double) value2) / 2;
                 }
             }
         }
@@ -60,6 +61,6 @@ public class MedianOfArray {
 //        System.out.println(instance.findMedianSortedArrays(Arrays.asList(), Arrays.asList(2,7,8,10)));
 //        System.out.println(instance.findMedianSortedArrays(Arrays.asList(-43, -25, -18, -15, -10, 9, 39, 40), Arrays.asList(-2)));
 //        System.out.println(instance.findMedianSortedArrays(Arrays.asList(), Arrays.asList(4)));
-        System.out.println(instance.findMedianSortedArrays(Arrays.asList(-49, 33, 35, 42 ), Arrays.asList(-26)));
+        System.out.println(instance.findMedianSortedArrays(Arrays.asList(-49, 33, 35, 42), Arrays.asList(-26)));
     }
 }

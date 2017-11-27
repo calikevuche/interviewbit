@@ -9,7 +9,7 @@ public class MathBug {
 
     public int isPrime(int A) {
         if (A == 0 || A == 1) return 0;
-        int upperLimit = (int)(Math.sqrt(A));
+        int upperLimit = (int) (Math.sqrt(A));
         for (int i = 2; i <= upperLimit; i++) {
             if (i < A && A % i == 0) return 0;
         }

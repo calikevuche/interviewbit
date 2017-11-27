@@ -11,11 +11,11 @@ public class ModularExpression {
         if (b == 0) return 1 % c;
         long res = 0;
         if (b % 2 == 0) {
-            res = Mod(a, b/2 ,c);
+            res = Mod(a, b / 2, c);
             res = (res * res) % c;
         } else {
             res = a % c;
-            res = (res * Mod(a, b-1, c)) % c;
+            res = (res * Mod(a, b - 1, c)) % c;
         }
         return (int) ((res + c) % c);
     }

@@ -7,7 +7,7 @@ public class TimeComplexity {
         int c = 0;
         for (int i = N; i > 0; i /= 2) {
             for (int j = 0; j < i; j++) {
-                c +=1;
+                c += 1;
                 System.out.println(c);
             }
         }

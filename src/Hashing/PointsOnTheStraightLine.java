@@ -69,9 +69,9 @@ public class PointsOnTheStraightLine {
 
     public static void main(String[] args) {
         PointsOnTheStraightLine pointsOnTheStraightLine = new PointsOnTheStraightLine();
-        pointsOnTheStraightLine.maxPoints(new ArrayList<>(Arrays.asList(2,3,3,5,5,6,8,8)), new ArrayList<>(Arrays.asList(2,5,8,3,6,6,3,6)));
-        pointsOnTheStraightLine.maxPoints(new ArrayList<>(Arrays.asList(2,3)), new ArrayList<>(Arrays.asList(2,3)));
-        pointsOnTheStraightLine.maxPoints(new ArrayList<>(Arrays.asList(1,2,3,1,1,1)), new ArrayList<>(Arrays.asList(1,2,3,1,1,1)));
+        pointsOnTheStraightLine.maxPoints(new ArrayList<>(Arrays.asList(2, 3, 3, 5, 5, 6, 8, 8)), new ArrayList<>(Arrays.asList(2, 5, 8, 3, 6, 6, 3, 6)));
+        pointsOnTheStraightLine.maxPoints(new ArrayList<>(Arrays.asList(2, 3)), new ArrayList<>(Arrays.asList(2, 3)));
+        pointsOnTheStraightLine.maxPoints(new ArrayList<>(Arrays.asList(1, 2, 3, 1, 1, 1)), new ArrayList<>(Arrays.asList(1, 2, 3, 1, 1, 1)));
         pointsOnTheStraightLine.maxPoints(
                 new ArrayList<>(Arrays.asList(18, 15, -10, 15, -11, 4, 13, -7, 5, -4, 3, -12, 20, -18, 19, -4, -13, -11, 10, 1, -8)),
                 new ArrayList<>(Arrays.asList(-3, 14, -9, 18, 14, 17, -18, 1, -18, -18, 18, 3, -16, 12, -2, -15, 2, 20, -14, 19, 10)));

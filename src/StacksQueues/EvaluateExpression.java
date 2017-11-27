@@ -8,8 +8,7 @@ import java.util.Stack;
  */
 public class EvaluateExpression {
 
-    public int evalRPN(ArrayList<String> a)
-    {
+    public int evalRPN(ArrayList<String> a) {
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < a.size(); i++) {
             String element = a.get(i);
@@ -28,8 +27,7 @@ public class EvaluateExpression {
         return stack.size() == 1 ? stack.pop() : 0;
     }
 
-    private boolean isOperator(String s)
-    {
+    private boolean isOperator(String s) {
         return s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/");
     }
 
@@ -46,7 +44,6 @@ public class EvaluateExpression {
         }
         return 0;
     }
-
 
 
     public static void main(String[] args) {

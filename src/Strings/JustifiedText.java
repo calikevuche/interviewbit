@@ -16,8 +16,8 @@ public class JustifiedText {
         while (startIndex + wordsPerLine < a.size()) {
             startIndex += wordsPerLine;
             wordsPerLine = getWordsNumber(a, b, startIndex);
-            boolean isLast = startIndex+wordsPerLine == a.size();
-            String line = getLine(a.subList(startIndex, startIndex+wordsPerLine), b, isLast);
+            boolean isLast = startIndex + wordsPerLine == a.size();
+            String line = getLine(a.subList(startIndex, startIndex + wordsPerLine), b, isLast);
             result.add(line);
         }
         return result;
@@ -30,10 +30,10 @@ public class JustifiedText {
             charCount += word.length();
             int spaces = i - startId;
             if (charCount + spaces > lineLength) {
-                return i-startId;
+                return i - startId;
             }
         }
-        return list.size()-startId;
+        return list.size() - startId;
     }
 
     public String getLine(List<String> list, int lineLength, boolean isLast) {
@@ -45,16 +45,16 @@ public class JustifiedText {
             }
         } else {
             int charLength = 0;
-            for (String s :list) {
+            for (String s : list) {
                 charLength += s.length();
             }
-            int holeCount = list.size()-1;
+            int holeCount = list.size() - 1;
             int commonSpaces = (lineLength - charLength) / holeCount;
             int additionalSpaces = (lineLength - charLength) % holeCount;
             for (int i = 0; i < list.size(); i++) {
                 String s = list.get(i);
                 result += s;
-                if (i == list.size()-1) {
+                if (i == list.size() - 1) {
                     break;
                 }
                 if (isLast) {
@@ -70,7 +70,7 @@ public class JustifiedText {
                 }
             }
             if (isLast) {
-                additionalSpaces = lineLength-charLength-holeCount;
+                additionalSpaces = lineLength - charLength - holeCount;
                 for (int i = 0; i < additionalSpaces; i++) {
                     result += " ";
                 }
@@ -81,7 +81,7 @@ public class JustifiedText {
 
     public static void main(String[] args) {
         JustifiedText instance = new JustifiedText();
-        ArrayList<String> list = new ArrayList<>(Arrays.asList("This", "is", "an", "example", "of", "text", "just","fication."));
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("This", "is", "an", "example", "of", "text", "just", "fication."));
 //        System.out.println(instance.getWordsNumber(list, 16, 0));
 //        System.out.println(instance.getWordsNumber(list, 16, 3));
 //        System.out.println(instance.getWordsNumber(list, 16, 6));

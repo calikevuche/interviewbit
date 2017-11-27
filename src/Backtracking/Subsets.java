@@ -18,19 +18,19 @@ public class Subsets {
     }
 
     void subsets(ArrayList<Integer> input, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> set, int i) {
-        if (i > input.size()-1) {
+        if (i > input.size() - 1) {
             return;
         }
         ArrayList<Integer> newSet = new ArrayList<>(set);
         newSet.add(input.get(i));
         result.add(newSet);
-        subsets(input, result, newSet, i+1);
-        subsets(input, result, set, i+1);
+        subsets(input, result, newSet, i + 1);
+        subsets(input, result, set, i + 1);
     }
 
     public static void main(String[] args) {
         Subsets subsets = new Subsets();
-        System.out.println(subsets.subsets(new ArrayList<>(Arrays.asList(1,2,3))));
+        System.out.println(subsets.subsets(new ArrayList<>(Arrays.asList(1, 2, 3))));
 //        System.out.println(subsets.subsets(new ArrayList<>(Arrays.asList(15, 20, 12, 19, 4 ))));
     }
 }

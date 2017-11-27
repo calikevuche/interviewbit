@@ -15,8 +15,8 @@ public class Factorization {
         for (int i = 1; i <= Math.sqrt(a); i++) {
             if (a % i == 0) {
                 factors.add(index, i);
-                if (i != a/i) {
-                    factors.add(index+1, a/i);
+                if (i != a / i) {
+                    factors.add(index + 1, a / i);
                 }
                 index++;
             }
@@ -42,7 +42,7 @@ public class Factorization {
     // 1 - is prime, 0 - not prime
     public static int isPrime(int a) {
         if (a < 2) return 0;
-        else  {
+        else {
             for (int i = 2; i <= Math.sqrt(a); i++) {
                 if (a % i == 0) {
                     return 0;
@@ -52,8 +52,8 @@ public class Factorization {
         }
     }
 
-    public static Integer[] getSieveArray (int a) {
-        Integer[] sieve = new Integer[a+1];
+    public static Integer[] getSieveArray(int a) {
+        Integer[] sieve = new Integer[a + 1];
         Arrays.fill(sieve, 1);
         sieve[0] = 0;
         sieve[1] = 1;

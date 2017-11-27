@@ -16,7 +16,7 @@ public class PalindromePartitioning {
             return resultList;
         }
         for (int i = 1; i < a.length(); i++) {
-            String begin = a.substring(0,i);
+            String begin = a.substring(0, i);
             if (isPalindrome(begin)) {
                 ArrayList<ArrayList<String>> lists = partition(a.substring(i));
                 for (ArrayList<String> list : lists) {
@@ -39,7 +39,7 @@ public class PalindromePartitioning {
         int n = sb.length() - 1;
         if (n == -1) return true;
         for (int i = 0; i <= n / 2; i++) {
-            if (sb.charAt(i) != sb.charAt(n-i)) return false;
+            if (sb.charAt(i) != sb.charAt(n - i)) return false;
         }
         return true;
     }

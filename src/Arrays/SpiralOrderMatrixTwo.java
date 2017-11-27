@@ -11,9 +11,12 @@ public class SpiralOrderMatrixTwo {
     // DO NOT MODIFY THE LIST
     public ArrayList<Integer> spiralOrder(final List<ArrayList<Integer>> A) {
         ArrayList<Integer> result = new ArrayList<Integer>();
-        int m  = A.size(); // rows
+        int m = A.size(); // rows
         int n = A.get(0).size(); // columns
-        int T = 0; int B = m - 1; int L = 0; int R = n - 1;
+        int T = 0;
+        int B = m - 1;
+        int L = 0;
+        int R = n - 1;
         int dir = 0; // 0 - right, 1 - down, 2 - left, 3 - up
 
         while (T <= B && L <= R) {
@@ -44,7 +47,7 @@ public class SpiralOrderMatrixTwo {
         return result;
     }
 
-    public ArrayList<ArrayList<Integer>> generateMatrix (int n) {
+    public ArrayList<ArrayList<Integer>> generateMatrix(int n) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 
         //initialize result matrix with 0 values
@@ -56,7 +59,10 @@ public class SpiralOrderMatrixTwo {
             result.add(arrayList);
         }
 
-        int T = 0; int B = n - 1; int L = 0; int R = n - 1;
+        int T = 0;
+        int B = n - 1;
+        int L = 0;
+        int R = n - 1;
         int dir = 0; // 0 - right, 1 - down, 2 - left, 3 - up
         int value = 1;
 

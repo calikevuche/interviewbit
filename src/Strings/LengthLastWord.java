@@ -8,7 +8,7 @@ public class LengthLastWord {
     public int lengthOfLastWord(final String a) {
         if (a.length() == 0) return 0;
         char[] chars = a.toCharArray();
-        int right = chars.length-1;
+        int right = chars.length - 1;
         int left = right;
         char c = chars[left];
         boolean isLetter = c != ' ';
@@ -20,7 +20,7 @@ public class LengthLastWord {
             }
         }
         if (!isLetter) return 0;
-        else return right-left;
+        else return right - left;
     }
 
     public static void main(String[] args) {

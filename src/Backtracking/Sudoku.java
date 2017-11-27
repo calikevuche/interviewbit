@@ -19,7 +19,7 @@ public class Sudoku {
         int sizeSmall = 3;
 
         if (isFull(table)) {
-            copyTable(table,result);
+            copyTable(table, result);
             return;
         }
 
@@ -28,8 +28,8 @@ public class Sudoku {
         }
 
         if (table.get(y).get(x) != '.') {
-            if (x+1 < size) solveSudoku(result, table, x+1, y);
-            else if (y+1 < size) solveSudoku(result, table, 0, y+1);
+            if (x + 1 < size) solveSudoku(result, table, x + 1, y);
+            else if (y + 1 < size) solveSudoku(result, table, 0, y + 1);
 
         } else {
             char num = '1';
@@ -60,8 +60,8 @@ public class Sudoku {
                     //area
                     int areaX = (x / sizeSmall) * sizeSmall;
                     int areaY = (y / sizeSmall) * sizeSmall;
-                    for (int i = areaY; i < areaY+sizeSmall; i++) {
-                        for (int j = areaX; j < areaX+sizeSmall; j++) {
+                    for (int i = areaY; i < areaY + sizeSmall; i++) {
+                        for (int j = areaX; j < areaX + sizeSmall; j++) {
                             if (table.get(i).get(j) == num) {
                                 valid = false;
                                 continue loop1;
@@ -75,11 +75,11 @@ public class Sudoku {
                     ArrayList<ArrayList<Character>> copy = copyTable(table);
                     copy.get(y).set(x, num);
                     if (isFull(copy)) {
-                        copyTable(copy,result);
+                        copyTable(copy, result);
                         return;
                     }
-                    if (x+1 < size) solveSudoku(result, copy, x+1, y);
-                    else if (y+1 < size) solveSudoku(result, copy, 0, y+1);
+                    if (x + 1 < size) solveSudoku(result, copy, x + 1, y);
+                    else if (y + 1 < size) solveSudoku(result, copy, 0, y + 1);
                 } else {
                     break;
                 }
@@ -105,7 +105,7 @@ public class Sudoku {
 
     private ArrayList<ArrayList<Character>> copyTable(ArrayList<ArrayList<Character>> list) {
         ArrayList<ArrayList<Character>> result = new ArrayList<>();
-        for (ArrayList<Character> array: list) {
+        for (ArrayList<Character> array : list) {
             result.add(new ArrayList<>(array));
         }
         return result;
@@ -113,14 +113,14 @@ public class Sudoku {
 
     private void copyTable(ArrayList<ArrayList<Character>> source, ArrayList<ArrayList<Character>> target) {
         target.clear();
-        for (ArrayList<Character> array: source) {
+        for (ArrayList<Character> array : source) {
             target.add(new ArrayList<>(array));
         }
     }
 
     private boolean isFull(ArrayList<ArrayList<Character>> list) {
-        for (ArrayList<Character> chars:list) {
-            for (char c:chars) {
+        for (ArrayList<Character> chars : list) {
+            for (char c : chars) {
                 if (c == '.') return false;
             }
         }
@@ -129,7 +129,7 @@ public class Sudoku {
 
     public static ArrayList<Character> convertStringToArraylist(String str) {
         ArrayList<Character> charList = new ArrayList<Character>();
-        for(int i = 0; i<str.length();i++){
+        for (int i = 0; i < str.length(); i++) {
             charList.add(str.charAt(i));
         }
         return charList;
