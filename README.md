@@ -1,2 +1,1 @@
-# interviewbit
-Java solutions (www.interviewbit.com)
+InterviewBit Java solutions
