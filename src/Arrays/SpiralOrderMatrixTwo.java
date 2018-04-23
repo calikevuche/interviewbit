@@ -48,7 +48,7 @@ public class SpiralOrderMatrixTwo {
     }
 
     public ArrayList<ArrayList<Integer>> generateMatrix(int n) {
-        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
 
         //initialize result matrix with 0 values
         for (int i = 0; i < n; i++) {

@@ -8,72 +8,35 @@ import java.util.Arrays;
  */
 public class MaxNonNegativeSubArray {
 
-    public ArrayList<Integer> maxset(ArrayList<Integer> a) {
-        ArrayList<Integer> maxList = new ArrayList<>();
-        ArrayList<Integer> tempList = new ArrayList<>();
-        tempList.add(0);
-        boolean reachNegative = false;
+    public ArrayList<Integer> maxNonNegSubArr(ArrayList<Integer> a) {
+        long maxSum = 0, sum = 0;
+        int id1 = 0, id2 = 0, max1 = -1, max2 = -1;
         for (int i = 0; i < a.size(); i++) {
             if (a.get(i) >= 0) {
-                if (reachNegative) {
-                    reachNegative = false;
-                    tempList.add(i);
+                if (i == 0 || a.get(i - 1) < 0) {
+                    id1 = i;
                 }
-                tempList.add(a.get(i));
+                sum += a.get(i);
+                id2 = i;
+                if (sum > maxSum ||
+                        (sum == maxSum && (id2 - id1) > (max2 - max1))) {
+                    maxSum = sum;
+                    max1 = id1;
+                    max2 = id2;
+                }
             } else {
-                if (!reachNegative && compare(tempList, maxList) == 1) {
-                    maxList.clear();
-                    maxList.addAll(tempList);
-                }
-                tempList.clear();
-                reachNegative = true;
+                sum = 0;
             }
         }
-        if (compare(tempList, maxList) == 1) {
-            maxList.clear();
-            maxList.addAll(tempList);
-            tempList.clear();
+        if (max1 != -1) {
+            return new ArrayList<>(a.subList(max1, max2 + 1));
+        } else {
+            return new ArrayList<>();
         }
-        if (maxList.size() == 0) return maxList;
-        return new ArrayList<>(maxList.subList(1, maxList.size()));
-    }
-
-    public long sum(ArrayList<Integer> a) {
-        long result = 0;
-        for (int i = 1; i < a.size(); i++) {
-            result += a.get(i);
-        }
-        return result;
-    }
-
-    public int compare(ArrayList<Integer> a, ArrayList<Integer> b) {
-        long sumA = sum(a);
-        long sumB = sum(b);
-
-        if (sumA > sumB) return 1;
-        else if (sumA < sumB) return -1;
-        else if (sumA == sumB) {
-            int lengthA = a.size();
-            int lengthB = b.size();
-            if (lengthA > lengthB) return 1;
-            else if (lengthA < lengthB) return -1;
-            else if (lengthA == lengthB) {
-                if (lengthA == 0 || lengthB == 0) return 0;
-                int startA = a.get(0);
-                int startB = b.get(0);
-                return Integer.compare(startB, startA);
-            }
-        }
-        return 0;
     }
 
     public static void main(String[] args) {
         MaxNonNegativeSubArray instance = new MaxNonNegativeSubArray();
-//        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList(-846930886, -1714636915, 424238335, -1649760492))));
-//        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList(1, 2, 5, -7, 2, 3))));
-//        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList( -1, -1, -1, -1, -1 ))));
-//        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList( 1967513926, 1540383426, -1303455736, -521595368 ))));
-//        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList( 756898537, -1973594324, -2038664370, -184803526, 1424268980 ))));
-        System.out.println(instance.maxset(new ArrayList<>(Arrays.asList(24115, -75629, -46517, 30105, 19451, -82188, 99505, 6752, -36716, 54438, -51501, 83871, 11137, -53177, 22294, -21609, -59745, 53635, -98142, 27968, -260, 41594, 16395, 19113, 71006, -97942, 42082, -30767, 85695, -73671))));
+        System.out.println(instance.maxNonNegSubArr(new ArrayList<>(Arrays.asList(1, 2, 5, -7, 2, 5))));
     }
 }

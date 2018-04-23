@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class SetMatrixZeros {
 
-    public void setZeroes1(ArrayList<ArrayList<Integer>> a) {
+    public void setZeroesV1(ArrayList<ArrayList<Integer>> a) {
         int n = a.size(); // rows count
         int m = a.get(0).size(); // columns count
         ArrayList<Integer> MN = new ArrayList<>();
@@ -33,54 +33,55 @@ public class SetMatrixZeros {
         System.out.println(a);
     }
 
-    public void setZeroes2(ArrayList<ArrayList<Integer>> a) {
-        if (a == null) return;
-        int n = a.size(); // rows count
-        int m = a.get(0).size(); // columns count
-        if (m == 0) return;
-        boolean firstRowZero = false;
-        boolean firstColumnZero = false;
-        for (int i = 0; i < a.get(0).size(); i++) {
+    public void setZeroesV2(ArrayList<ArrayList<Integer>> a) {
+        if (a == null || a.size() == 0 || a.get(0).size() == 0) {
+            return;
+        }
+        int m = a.size(); // rows count
+        int n = a.get(0).size(); // columns count
+        boolean firstRowZero = false, firstColumnZero = false;
+
+        for (int i = 0; i < n; i++) {
             if (a.get(0).get(i) == 0) {
                 firstRowZero = true;
                 break;
             }
         }
-        for (int i = 0; i < a.size(); i++) {
+        for (int i = 0; i < m; i++) {
             if (a.get(i).get(0) == 0) {
                 firstColumnZero = true;
                 break;
             }
         }
-        for (int i = 1; i < a.size(); i++) {
-            for (int j = 1; j < a.get(i).size(); j++) {
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
                 if (a.get(i).get(j) == 0) {
                     a.get(i).set(0, 0); // row
                     a.get(0).set(j, 0); // column
                 }
             }
         }
-        for (int i = 1; i < a.size(); i++) {
-            for (int j = 1; j < a.get(i).size(); j++) {
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
                 if (a.get(i).get(0) == 0 || a.get(0).get(j) == 0) {
                     a.get(i).set(j, 0);
                 }
             }
         }
         if (firstRowZero) {
-            for (int i = 0; i < a.get(0).size(); i++) {
+            for (int i = 0; i < n; i++) {
                 a.get(0).set(i, 0);
             }
         }
         if (firstColumnZero) {
-            for (int i = 0; i < a.size(); i++) {
+            for (int i = 0; i < m; i++) {
                 a.get(i).set(0, 0);
             }
         }
         System.out.println(a);
     }
 
-    public void setZeroes3(ArrayList<ArrayList<Integer>> A) {
+    public void setZeroesV3(ArrayList<ArrayList<Integer>> A) {
         int m, n;
 
         if (A == null)
@@ -128,7 +129,7 @@ public class SetMatrixZeros {
     }
 
 
-    public void clearRow(ArrayList<ArrayList<Integer>> A, int row, int m, int n, int value) {
+    private void clearRow(ArrayList<ArrayList<Integer>> A, int row, int m, int n, int value) {
 
         for (int i = 0; i < n; i++) {
             if (A.get(row).get(i) == 1)
@@ -136,7 +137,7 @@ public class SetMatrixZeros {
         }
     }
 
-    public void clearCol(ArrayList<ArrayList<Integer>> A, int col, int m, int n, int value) {
+    private void clearCol(ArrayList<ArrayList<Integer>> A, int col, int m, int n, int value) {
         for (int i = 0; i < m; i++) {
             if (A.get(i).get(col) == 1)
                 A.get(i).set(col, value);
@@ -146,8 +147,9 @@ public class SetMatrixZeros {
     public static void main(String[] args) {
         SetMatrixZeros instance = new SetMatrixZeros();
         ArrayList<ArrayList<Integer>> matrix = new ArrayList<>();
-        matrix.add(new ArrayList<>(Arrays.asList(0, 0)));
-        matrix.add(new ArrayList<>(Arrays.asList(1, 1)));
-        instance.setZeroes3(matrix);
+        matrix.add(new ArrayList<>(Arrays.asList(1, 1, 1)));
+        matrix.add(new ArrayList<>(Arrays.asList(0, 1, 1)));
+        matrix.add(new ArrayList<>(Arrays.asList(1, 0, 1)));
+        instance.setZeroesV2(matrix);
     }
 }

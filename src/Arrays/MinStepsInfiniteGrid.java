@@ -10,12 +10,14 @@ public class MinStepsInfiniteGrid {
 
     // X and Y co-ordinates of the points in order.
     // Each point is represented by (X.get(i), Y.get(i))
+
     public int coverPoints(ArrayList<Integer> X, ArrayList<Integer> Y) {
-        int distance = 0;
+        int x, y, distance = 0;
         for (int i = 0; i < X.size() - 1; i++) {
-            int x = X.get(i) - X.get(i + 1);
-            int y = Y.get(i) - Y.get(i + 1);
+            x = X.get(i) - X.get(i + 1);
+            y = Y.get(i) - Y.get(i + 1);
             distance += max(modulus(x), modulus(y));
+//            Math.max(Math.abs(x), Math.abs(y))
         }
         return distance;
     }

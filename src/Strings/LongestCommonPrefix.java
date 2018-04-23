@@ -8,7 +8,7 @@ import java.util.Arrays;
  */
 public class LongestCommonPrefix {
 
-    public String longestCommonPrefix(ArrayList<String> arrayList) {
+    public String longestCommonPrefixV1(ArrayList<String> arrayList) {
         int minStrIndex = 0;
         for (int i = 1; i < arrayList.size(); i++) {
             if (arrayList.get(i).length() < arrayList.get(minStrIndex).length()) minStrIndex = i;
@@ -28,13 +28,33 @@ public class LongestCommonPrefix {
         return prefix.toString();
     }
 
+    public String longestCommonPrefixV2(ArrayList<String> list) {
+        if (list == null || list.size() == 0) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        String word = list.get(0);
+        loop1:
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            for (String string : list) {
+                if (i >= string.length() ||
+                        string.charAt(i) != ch) {
+                    break loop1;
+                }
+            }
+            sb.append(ch);
+        }
+        return sb.toString();
+    }
+
     public static void main(String[] args) {
         LongestCommonPrefix instance = new LongestCommonPrefix();
-        System.out.println(instance.longestCommonPrefix(new ArrayList<>(Arrays.asList("aa", "ab"))));
-        System.out.println(instance.longestCommonPrefix(new ArrayList<>(Arrays.asList("aaa", "aab"))));
-        System.out.println(instance.longestCommonPrefix(new ArrayList<>(Arrays.asList("aaa", "aaa"))));
-        System.out.println(instance.longestCommonPrefix(new ArrayList<>(Arrays.asList("aaa", ""))));
-        System.out.println(instance.longestCommonPrefix(new ArrayList<>(Arrays.asList("", ""))));
-        System.out.println(instance.longestCommonPrefix(new ArrayList<>(Arrays.asList("a", "a"))));
+        System.out.println(instance.longestCommonPrefixV1(new ArrayList<>(Arrays.asList("aa", "ab"))));
+        System.out.println(instance.longestCommonPrefixV1(new ArrayList<>(Arrays.asList("aaa", "aab"))));
+        System.out.println(instance.longestCommonPrefixV1(new ArrayList<>(Arrays.asList("aaa", "aaa"))));
+        System.out.println(instance.longestCommonPrefixV1(new ArrayList<>(Arrays.asList("aaa", ""))));
+        System.out.println(instance.longestCommonPrefixV1(new ArrayList<>(Arrays.asList("", ""))));
+        System.out.println(instance.longestCommonPrefixV1(new ArrayList<>(Arrays.asList("a", "a"))));
     }
 }

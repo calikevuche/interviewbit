@@ -8,18 +8,17 @@ import java.util.List;
  */
 public class MaxSumContiguousSubarray {
 
-    // DO NOT MODFIY THE LIST.
-    public int maxSubArrayN3(final List<Integer> array) {
+    // DO NOT MODFIY THE LIST
+
+    public int MSS_N3(final List<Integer> array) {
         if (array.size() == 0) return 0;
-        int L = 0;
-        int R = array.size() - 1;
-        int maxSum = array.get(0);
-        int sum = 0;
+        int L = 0 ,R = array.size() - 1;
+        int sum, maxSum = array.get(0);
         while (L <= R) {
             while (L <= R) {
                 sum = 0;
                 for (int j = L; j <= R; j++) {
-                    sum = sum + array.get(j);
+                    sum += array.get(j);
                 }
                 if (sum > maxSum) maxSum = sum;
                 L++;
@@ -30,76 +29,109 @@ public class MaxSumContiguousSubarray {
         return maxSum;
     }
 
-    public int maxSubArrayN2(final List<Integer> array) {
+    public int MSS_N2(final List<Integer> array) {
         if (array.size() == 0) return 0;
-        int L = 0;
-        int R = 1;
-        int maxSum = array.get(0);
-        int sum = 0;
+        int L = 0, R = 0;
+        int sum, maxSum = array.get(0);
         while (L < array.size()) {
             sum = 0;
-            while (R <= array.size()) {
-                sum += array.get(R - 1);
+            while (R < array.size()) {
+                sum += array.get(R);
                 if (sum > maxSum) maxSum = sum;
                 R++;
             }
             L++;
-            R = L + 1;
+            R = L;
         }
         return maxSum;
     }
 
-    int maxSubArrayConquer(List<Integer> array, int start, int end) {
-        if (start == end) {
-            return array.get(start);
+    // O(N * logN)
+
+    int MSS_divideAndConquer(List<Integer> array, int size) {
+        if (size == 1) {
+            return array.get(0);
         }
-        int m = start + (end + 1 - start) / 2;
-        int leftMSA = maxSubArrayConquer(array, start, m - 1);
-        int rightMSA = maxSubArrayConquer(array, m, end);
+        int middle = size / 2;
+        int leftMSA = MSS_divideAndConquer(array, middle);
+        int rightMSA = MSS_divideAndConquer(array.subList(middle, array.size()), size - middle);
         int maxLeftPart = Integer.MIN_VALUE;
         int maxRightPart = Integer.MIN_VALUE;
         int sum = 0;
-        for (int i = m; i <= end; i++) {
+        for (int i = middle; i < size; i++) {
             sum += array.get(i);
             if (sum > maxRightPart) maxRightPart = sum;
         }
         sum = 0;
-        for (int j = m - 1; j >= start; j--) {
-            sum += array.get(j);
+        for (int i = middle - 1; i >= 0; i--) {
+            sum += array.get(i);
             if (sum > maxLeftPart) maxLeftPart = sum;
         }
-        return Math.max(Math.max(leftMSA, rightMSA), maxLeftPart + maxRightPart);
+        return Math.max(
+                Math.max(leftMSA, rightMSA),
+                maxLeftPart + maxRightPart
+        );
     }
 
-    int maxSubArrayKadane(List<Integer> array) {
-        if (array.size() == 0) return 0;
-        if (array.size() == 1) return array.get(0);
-        boolean isNegative = true;
-        int maxNegative = Integer.MIN_VALUE;
-        for (int num : array) {
-            if (num >= 0) {
-                isNegative = false;
-                break;
-            } else if (num > maxNegative) maxNegative = num;
+    // O(N)
+
+    int MSS_Kadane(List<Integer> array) {
+        if (array.size() == 0) {
+            return 0;
         }
-        if (isNegative) return maxNegative;
+        boolean allNegatives = true;
+        int ans = Integer.MIN_VALUE;
+        for (int i : array) {
+            if (i >= 0) {
+                allNegatives = false;
+                break;
+            } else if (i > ans) {
+                ans = i;
+            }
+        }
+        if (allNegatives) {
+            return ans;
+        }
+        ans = 0;
         int sum = 0;
-        int ans = 0;
-        for (int i = 0; i < array.size(); i++) {
-            sum += array.get(i);
-            if (sum < 0) sum = 0;
-            else if (sum > ans) ans = sum;
+        for (int i : array) {
+            sum += i;
+            if (sum < 0) {
+                sum = 0;
+            } else if (sum > ans) {
+                ans = sum;
+            }
         }
         return ans;
     }
 
+    int MSS_V5(List<Integer> array) {
+        if (array.size() == 0) {
+            return 0;
+        }
+        int maxSum = Integer.MIN_VALUE;
+        int sum = 0;
+        for (int i : array) {
+            if (sum > 0) {
+                sum += i;
+            } else {
+                sum = i;
+            }
+            maxSum = Math.max(maxSum, sum);
+        }
+        return maxSum;
+    }
+
     public static void main(String[] args) {
         MaxSumContiguousSubarray instance = new MaxSumContiguousSubarray();
-        List<Integer> list = Arrays.asList(2, -1, 3, 4, 1, -2, 1, -5, -4);
+        List<Integer> list = Arrays.asList(2, 1, -3, 4, -1, 2, 1, -5, 4);
+        List<Integer> list2 = Arrays.asList(-2, -1, -3, -4, -1, -2, -1, -5, -4);
+        List<Integer> list3 = Arrays.asList(-100);
+
 //        System.out.println(instance.maxSubArrayN3(list));
 //        System.out.println(instance.maxSubArrayN2(list));
-//        System.out.println(instance.maxSubArrayConquer(list, 0, list.size()-1));
-        System.out.println(instance.maxSubArrayKadane(list));
-        ;
+//        System.out.println(instance.MSS_divideAndConquer(list3, list3.size()));
+//        System.out.println(instance.MSS_Kadane(list3));
+        System.out.println(instance.MSS_V5(list));
     }
 }

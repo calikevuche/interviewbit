@@ -5,8 +5,7 @@ package Strings;
  */
 public class PalindromeString {
 
-    // :( Slow
-    public int isPalindrome1(String a) {
+    public int isPalindromeV1(String a) {
         a = a.toLowerCase();
         for (char c : a.toCharArray()) {
             if (c < '0' || (c > '9' && c < 'a') || c > 'z') {
@@ -24,8 +23,7 @@ public class PalindromeString {
         return 1;
     }
 
-    // Faster :)
-    public int isPalindrome2(String a) {
+    public int isPalindromeV2(String a) {
         char[] chars = a.toLowerCase().toCharArray();
         int left = getAlphaNumericPosition(chars, 0, chars.length - 1, false);
         if (left == -1) return 1;
@@ -41,7 +39,7 @@ public class PalindromeString {
         return 1;
     }
 
-    int getAlphaNumericPosition(char[] chars, int start, int end, boolean reverse) {
+    private int getAlphaNumericPosition(char[] chars, int start, int end, boolean reverse) {
         if (reverse) {
             for (int i = end; i >= start; i--) {
                 if ((chars[i] >= '0' && chars[i] <= '9') || (chars[i] >= 'a' && chars[i] <= 'z')) return i;
@@ -55,8 +53,7 @@ public class PalindromeString {
         return -1;
     }
 
-    // Correct Solution :D
-    public int isPalindrome(String a) {
+    public int isPalindromeV3(String a) {
         StringBuilder sb = new StringBuilder();
         for (char c : a.toLowerCase().toCharArray()) {
             if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z')) sb.append(c);
@@ -69,9 +66,36 @@ public class PalindromeString {
         return 1;
     }
 
+    public int isPalindromeV4(String s) {
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        s = s.toLowerCase();
+        int left = 0, right = s.length() - 1;
+        while (left < right) {
+            while (left < s.length() &&
+                    (s.charAt(left) < 'a' || s.charAt(left) > 'z') &&
+                    (s.charAt(left) < '0' || s.charAt(left) > '9')) {
+                left++;
+            }
+            while (right >= 0 &&
+                    (s.charAt(right) < 'a' || s.charAt(right) > 'z') &&
+                    (s.charAt(right) < '0' || s.charAt(right) > '9')) {
+                right--;
+            }
+            if (left < right && s.charAt(left) != s.charAt(right)) {
+                return 0;
+            }
+            left++;
+            right--;
+        }
+        return 1;
+    }
+
     public static void main(String[] args) {
         PalindromeString instance = new PalindromeString();
-        System.out.println(instance.isPalindrome("race a car"));
-        System.out.println(instance.isPalindrome("2z2"));
+        System.out.println(instance.isPalindromeV4("race a car"));
+        System.out.println(instance.isPalindromeV4("2z2"));
+        System.out.println(instance.isPalindromeV4("\""));
     }
 }

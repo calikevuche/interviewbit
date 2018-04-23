@@ -5,7 +5,7 @@ package Strings;
  */
 public class CountAndSay {
 
-    public String countAndSay(int a) {
+    public String countAndSayV1(int a) {
         if (a == 0) return "";
         String result = "1";
         for (int i = 0; i < a - 1; i++) {
@@ -14,7 +14,7 @@ public class CountAndSay {
         return result;
     }
 
-    public String generateNext(String str) {
+    private String generateNext(String str) {
         StringBuilder builder = new StringBuilder();
         char[] chars = str.toCharArray();
         char current, prev = chars[0];
@@ -40,8 +40,44 @@ public class CountAndSay {
         return builder.toString();
     }
 
+    public String countAndSayV2(int n) {
+        if (n <= 0) {
+            return "";
+        }
+        String string = "1";
+        StringBuilder sb = new StringBuilder();
+        for (int i = 2; i < n + 1; i++) {
+            char[] chars = string.toCharArray();
+            char ch = 0;
+            int count = 0;
+            for (int j = 0; j < chars.length; j++) {
+                if (j == 0) {
+                    ch = chars[0];
+                    count = 1;
+                } else if (chars[j] == ch) {
+                    count++;
+                } else {
+                    sb.append(count).append(ch);
+                    ch = chars[j];
+                    count = 1;
+                }
+            }
+            sb.append(count).append(ch);
+            string = sb.toString();
+            sb.delete(0, sb.length());
+        }
+        return string;
+    }
+
     public static void main(String[] args) {
         CountAndSay instance = new CountAndSay();
-        System.out.println(instance.countAndSay(2));
+        System.out.println(instance.countAndSayV2(1));
+        System.out.println(instance.countAndSayV2(2));
+        System.out.println(instance.countAndSayV2(3));
+        System.out.println(instance.countAndSayV2(4));
+        System.out.println(instance.countAndSayV2(5));
+        System.out.println(instance.countAndSayV2(6));
+        System.out.println(instance.countAndSayV2(7));
+        System.out.println(instance.countAndSayV2(8));
     }
 }
