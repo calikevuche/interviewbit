@@ -5,7 +5,7 @@ package Strings;
  */
 public class Atoi {
 
-    public int atoi0(final String a) {
+    public int atoiV1(final String a) {
         char[] chars = a.toCharArray();
         int index1 = -1, index2 = -1;
         for (int i = 0; i < chars.length; i++) {
@@ -49,16 +49,68 @@ public class Atoi {
         return (int) result;
     }
 
-    public int atoi(final String a) {
+    public int atoiV2(String s) {
+        char[] chars = s.toCharArray();
+        int start = 0, end = 0;
+        boolean negative = false;
+        while (start < chars.length && chars[start] == ' ') {
+            start++;
+        }
+        if (start < chars.length) {
+            if (chars[start] == '+') {
+                start++;
+                negative = false;
+            } else if (chars[start] == '-') {
+                start++;
+                negative = true;
+            }
+        }
+        while (start < chars.length && chars[start] == '0') {
+            start++;
+        }
+        end = start;
+        while (end < chars.length && chars[end] >= '0' && chars[end] <= '9') {
+            end++;
+        }
+        if (start == end) {
+            return 0;
+        }
+        String sub = s.substring(start, end);
+        chars = sub.toCharArray();
+        int num = 0, shift = 0, result = 0;
+        long val = 0L;
+        for (int i = chars.length - 1; i >= 0; i--) {
+            num = chars[i] - '0';
+            shift = chars.length - 1 - i;
+            val = (long)num * (int)Math.pow(10, shift);
+            if (negative) {
+                val = -val;
+                if (val < Integer.MIN_VALUE || Integer.MIN_VALUE - result > (int)val) {
+                    return Integer.MIN_VALUE;
+                } else {
+                    result += (int)val;
+                }
+            } else {
+                if (val > Integer.MAX_VALUE || Integer.MAX_VALUE - result < (int)val) {
+                    return Integer.MAX_VALUE;
+                } else {
+                    result += (int)val;
+                }
+            }
+        }
+        return result;
+    }
+
+    public int atoiV3(final String a) {
         char[] str = a.toCharArray();
         int sign = 1, base = 0, i = 0;
-        while (str[i] == ' ') {
+        while (i < str.length && str[i] == ' ') {
             i++;
         }
-        if (str[i] == '-' || str[i] == '+') {
+        if (i < str.length && (str[i] == '-' || str[i] == '+')) {
             sign = (str[i++] == '-') ? -1 : 1;
         }
-        while (str[i] >= '0' && str[i] <= '9') {
+        while (i < str.length && str[i] >= '0' && str[i] <= '9') {
             if (base > Integer.MAX_VALUE / 10 || (base == Integer.MAX_VALUE / 10 && str[i] - '0' > 7)) {
                 if (sign == 1) return Integer.MAX_VALUE;
                 else return Integer.MIN_VALUE;
@@ -70,12 +122,9 @@ public class Atoi {
 
     public static void main(String[] args) {
         Atoi instance = new Atoi();
-        System.out.println(instance.atoi("9 2704"));
-        System.out.println(instance.atoi("9a 2704"));
-        System.out.println(instance.atoi(" dadad  2704   aasdasd"));
-        System.out.println(instance.atoi("  +721+4 daafs"));
-        System.out.println(instance.atoi("-6435D56183011M11   648G1 903778065  762 75316456373673B5 334 19885 90668 8 98K  X277 9846 "));
-        System.out.println(instance.atoi(" V515V 5793K 627 23815945269 1 1249794L 631 8755 7"));
-        System.out.println(instance.atoi("-54332872018247709407 4 54"));
+        System.out.println(instance.atoiV2("9 2704"));
+        System.out.println(instance.atoiV2("7 U 0 T7165 0128862 089 39 5"));
+        System.out.println(instance.atoiV2("+7"));
+        System.out.println(instance.atoiV2("-88297 248252140B12 37239U4622733246I218 9 1303 44 A83793H3G2 1674443R591 4368 7 97"));
     }
 }

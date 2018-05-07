@@ -5,7 +5,7 @@ package Strings;
  */
 public class RomanToInteger {
 
-    public int romanToInt(String a) {
+    public int romanToIntV1(String a) {
         int result = 0;
         char[] chars = a.toCharArray();
         for (int i = 0; i < chars.length; i++) {
@@ -39,13 +39,47 @@ public class RomanToInteger {
         return result;
     }
 
+    public int romanToIntV2(String a) {
+        int result = 0;
+        char[] ar = a.toCharArray();
+        for (int i = 0; i < ar.length; i++) {
+            if (i < ar.length - 1 && getInt(ar[i]) < getInt(ar[i+1])) {
+                result -= getInt(ar[i]);
+            } else {
+                result += getInt(ar[i]);
+            }
+        }
+        return result;
+    }
+
+    private int getInt(char ch) {
+        switch (ch) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
+    }
+
     public static void main(String[] args) {
         RomanToInteger instance = new RomanToInteger();
-        System.out.println(instance.romanToInt("XIII"));
-        System.out.println(instance.romanToInt("MCMIV"));
-        System.out.println(instance.romanToInt("MCMLIV"));
-        System.out.println(instance.romanToInt("MCMXC"));
-        System.out.println(instance.romanToInt("MMXIV"));
-        System.out.println(instance.romanToInt("MMMMMMXIV"));
+        System.out.println(instance.romanToIntV2("XIII"));
+        System.out.println(instance.romanToIntV2("MCMIV"));
+        System.out.println(instance.romanToIntV2("MCMLIV"));
+        System.out.println(instance.romanToIntV2("MCMXC"));
+        System.out.println(instance.romanToIntV2("MMXIV"));
+        System.out.println(instance.romanToIntV2("MMMMMMXIV"));
     }
 }

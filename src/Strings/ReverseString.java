@@ -5,7 +5,7 @@ package Strings;
  */
 public class ReverseString {
 
-    public String reverseWords(String a) {
+    public String reverseWordsV1(String a) {
         if (a.equals("")) return "";
         char[] chars = a.toCharArray();
         StringBuilder result = new StringBuilder();
@@ -35,14 +35,53 @@ public class ReverseString {
         return result.toString();
     }
 
+    public String reverseWordsV2(String s) {
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+        char[] ar = s.toCharArray();
+        int i = 0, j = 0, len = ar.length;
+        while (i < len && ar[len - 1 - i] == ' ') {
+            i++;
+        }
+        if (i == len) {
+            return "";
+        }
+        j = i;
+        StringBuilder res = new StringBuilder();
+        while (i < len && j < len) {
+            if (ar[len - 1 - j] != ' ') {
+                j++;
+            } else if (j > i) {
+                res.append(s, len - j, len - i).append(' ');
+                i = j;
+            } else {
+                i++;
+                j++;
+            }
+        }
+        if (j > i) {
+            res.append(s, 0, len - i);
+        }
+        if (res.length() > 0 && res.charAt(res.length() - 1) == ' ') {
+            res.deleteCharAt(res.length() - 1);
+        }
+        return res.toString();
+    }
+
     public static void main(String[] args) {
         ReverseString instance = new ReverseString();
-        System.out.println(instance.reverseWords("aaa sss"));
-        System.out.println(instance.reverseWords("  aaa   sss   "));
-        System.out.println(instance.reverseWords(""));
-        System.out.println(instance.reverseWords(" "));
-        System.out.println(instance.reverseWords("   "));
-        System.out.println(instance.reverseWords("a"));
-        System.out.println(instance.reverseWords(" a "));
+        System.out.println(instance.reverseWordsV2("aaa sss"));
+        System.out.println(instance.reverseWordsV2("  aaa   sss   "));
+        System.out.println(instance.reverseWordsV2(""));
+        System.out.println(instance.reverseWordsV2(" "));
+        System.out.println(instance.reverseWordsV2("   "));
+        System.out.println(instance.reverseWordsV2("a"));
+        System.out.println(instance.reverseWordsV2(" a "));
+
+        String test = "abcd";
+        StringBuilder sb = new StringBuilder();
+        System.out.println(sb.append(test, 0, 4));
+        System.out.println(test.substring(0, 4));
     }
 }
