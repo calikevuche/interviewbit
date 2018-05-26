@@ -6,33 +6,38 @@ package LinkedLists;
 public class ReverseLinkedList2 {
 
     public ListNode reverseBetween(ListNode a, int m, int n) {
-        ListNode result = null;
+        if (a == null || a.next == null) {
+            return a;
+        }
+        ListNode current = a;
+        ListNode head = current;
+        ListNode prefixEnd = null;
+        int i = 1;
+        while (i < m) {
+            if (i == m - 1) {
+                prefixEnd = current;
+            }
+            current = current.next;
+            i++;
+        }
+        ListNode reverseEnd = current;
         ListNode next = null;
         ListNode prev = null;
-        ListNode startRev = null;
-        ListNode endRev = null;
-        int i = 0;
-        if (m > 1) result = a;
-        while (i < m - 1) {
-            if (i == m - 2) startRev = a;
-            a = a.next;
+        while (i <= n) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
             i++;
         }
-        while (i < n) {
-            if (i == m - 1) endRev = a;
-            next = a.next;
-            a.next = prev;
-            prev = a;
-            a = next;
-            i++;
+        if (prefixEnd != null) {
+            prefixEnd.next = prev;
+        } else {
+            head = prev;
         }
-        if (m == 1) result = prev;
-        else startRev.next = prev;
-        if (a != null && endRev != null) endRev.next = a;
-        return result;
-    }
-
-    public static void main(String[] args) {
-
+        if (reverseEnd != null) {
+            reverseEnd.next = current;
+        }
+        return head;
     }
 }

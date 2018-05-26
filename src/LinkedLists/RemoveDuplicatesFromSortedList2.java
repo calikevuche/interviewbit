@@ -7,7 +7,7 @@ import TwoPointers.RemoveDuplicatesFromSortedArray;
  */
 public class RemoveDuplicatesFromSortedList2 {
 
-    public ListNode deleteDuplicates(ListNode a) {
+    public ListNode deleteDuplicates1(ListNode a) {
         if (a.next == null) return a;
         ListNode unique = null;
         ListNode firstUnique = null;
@@ -39,6 +39,51 @@ public class RemoveDuplicatesFromSortedList2 {
         return firstUnique;
     }
 
+    public ListNode deleteDuplicates2(ListNode a) {
+        boolean duplicates;
+        ListNode result = null, head = null;
+        while (a != null) {
+            duplicates = false;
+            while (a.next != null && a.val == a.next.val) {
+                a = a.next;
+                duplicates = true;
+            }
+            if (!duplicates) {
+                if (head == null) {
+                    result = a;
+                    head = result;
+                } else {
+                    result.next = a;
+                    result = result.next;
+                }
+            }
+            a = a.next;
+        }
+        if (result != null) {
+            result.next = null;
+        }
+        return head;
+    }
+
+    public ListNode deleteDuplicates3(ListNode a) {
+        ListNode fakeHead = new ListNode(0);
+        ListNode result = fakeHead;
+        result.next = a;
+        ListNode cur = a;
+        while (cur != null) {
+            while (cur.next != null && cur.val == cur.next.val) {
+                cur = cur.next;
+            }
+            if (result.next == cur) {
+                result = result.next;
+            } else {
+                result.next = cur.next;
+            }
+            cur = cur.next;
+        }
+        return fakeHead.next;
+    }
+
     public static void main(String[] args) {
         RemoveDuplicatesFromSortedList2 instance = new RemoveDuplicatesFromSortedList2();
         ListNode a1 = new ListNode(1);
@@ -50,6 +95,6 @@ public class RemoveDuplicatesFromSortedList2 {
         a2.next = a3;
 //        a3.next = a4;
 //        a4.next = a5;
-        instance.deleteDuplicates(a1);
+        instance.deleteDuplicates1(a1);
     }
 }

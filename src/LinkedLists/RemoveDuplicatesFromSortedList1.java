@@ -32,15 +32,15 @@ public class RemoveDuplicatesFromSortedList1 {
         return firstUnique;
     }
 
-    public ListNode deleteDuplicates(ListNode a) {
-        ListNode origin = a;
+    public ListNode deleteDuplicates2(ListNode a) {
+        ListNode head = a;
         while (a != null) {
             while (a.next != null && a.val == a.next.val) {
                 a.next = a.next.next;
             }
             a = a.next;
         }
-        return origin;
+        return head;
     }
 
 
@@ -55,7 +55,7 @@ public class RemoveDuplicatesFromSortedList1 {
 //        a2.next = a3;
 //        a3.next = a4;
 //        a4.next = a5;
-        instance.deleteDuplicates(a1);
+        instance.deleteDuplicates2(a1);
 
     }
 }

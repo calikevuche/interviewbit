@@ -41,18 +41,15 @@ public class MergeTwoSortedLists {
         return first;
     }
 
-    public ListNode mergeTwoLists(ListNode a, ListNode b) {
-        ListNode head = null;
-        if (a.val < b.val) {
-            head = a;
-            a = a.next;
-        } else {
-            head = b;
-            b = b.next;
+    public ListNode mergeTwoLists2(ListNode a, ListNode b) {
+        if (a == null) {
+            return b;
         }
-
+        if (b == null) {
+            return a;
+        }
+        ListNode head = new ListNode(0);
         ListNode merge = head;
-
         while (a != null && b != null) {
             if (a.val < b.val) {
                 merge.next = a;
@@ -63,17 +60,11 @@ public class MergeTwoSortedLists {
             }
             merge = merge.next;
         }
-
         if (a != null) {
             merge.next = a;
         } else {
             merge.next = b;
         }
-
-        return head;
-    }
-
-    public static void main(String[] args) {
-
+        return head.next;
     }
 }

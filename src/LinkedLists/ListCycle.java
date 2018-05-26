@@ -11,13 +11,13 @@ public class ListCycle {
     public ListNode detectCycle1(ListNode a) {
         int counter = 0;
         ListNode head = a;
-        a = a.next;
-        counter++;
         while (a != null) {
             int i = 0;
             ListNode b = head;
             while (i < counter) {
-                if (b == a) return b;
+                if (b == a) {
+                    return b;
+                }
                 b = b.next;
                 i++;
             }
@@ -28,37 +28,13 @@ public class ListCycle {
     }
 
     public ListNode detectCycle2(ListNode a) {
-        List<ListNode> nodes = new ArrayList<>();
-        while (a != null) {
-            for (ListNode node : nodes) {
-                if (node == a) return node;
-            }
-            nodes.add(a);
-            a = a.next;
-        }
-        return null;
-    }
-
-    public ListNode detectCycle(ListNode a) {
-        ListNode head = a;
         ListNode slow = a;
         ListNode fast = a;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) {
-                fast = fast.next;
-                int size = 1;
-                while (fast != slow) {
-                    fast = fast.next;
-                    size++;
-                }
-                slow = head;
-                fast = head;
-                while (size > 0) {
-                    fast = fast.next;
-                    size--;
-                }
+                slow = a;
                 while (slow != fast) {
                     slow = slow.next;
                     fast = fast.next;
@@ -67,9 +43,5 @@ public class ListCycle {
             }
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-
     }
 }

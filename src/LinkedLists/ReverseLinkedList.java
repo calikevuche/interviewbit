@@ -8,17 +8,13 @@ public class ReverseLinkedList {
     public ListNode reverseList(ListNode a) {
         ListNode current = a;
         ListNode next;
-        ListNode prev = null;
+        ListNode head = null;
         while (current != null) {
             next = current.next;
-            current.next = prev;
-            prev = current;
+            current.next = head;
+            head = current;
             current = next;
         }
-        return prev;
-    }
-
-    public static void main(String[] args) {
-
+        return head;
     }
 }

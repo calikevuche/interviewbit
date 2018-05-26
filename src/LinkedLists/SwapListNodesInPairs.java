@@ -6,28 +6,25 @@ package LinkedLists;
 public class SwapListNodesInPairs {
 
     public ListNode swapPairs(ListNode a) {
-        if (a == null || a.next == null) return a;
-        ListNode nextA = a.next;
-        ListNode nextNextA = a.next.next;
-        a.next = null;
-        nextA.next = a;
-        ListNode head = nextA;
-        ListNode prevA = a;
-        a = nextNextA;
-
-        while (a != null && a.next != null) {
-            nextA = a.next;
-            nextNextA = a.next.next;
-            a.next = null;
-            nextA.next = a;
-            prevA.next = nextA;
-            prevA = a;
-            a = nextNextA;
+        if (a == null || a.next == null) {
+            return a;
         }
-
-        if (a != null) prevA.next = a;
-
-        return head;
+        ListNode head = new ListNode(0);
+        ListNode cur = a;
+        ListNode next, nextNext, prev = head;
+        while (cur != null && cur.next != null) {
+            next = cur.next;
+            nextNext = cur.next.next;
+            next.next = cur;
+            cur.next = null;
+            prev.next = next;
+            prev = cur;
+            cur = nextNext;
+        }
+        if (cur != null) {
+            prev.next = cur;
+        }
+        return head.next;
     }
 
     public static void main(String[] args) {

@@ -11,27 +11,30 @@ public class PartitionList {
         while (a != null) {
             if (a.val < b) {
                 if (firstLeft == null) {
-                    left = new ListNode(a.val);
-                    firstLeft = left;
+                    firstLeft = a;
+                    left = firstLeft;
                 } else {
-                    left.next = new ListNode(a.val);
+                    left.next = a;
                     left = left.next;
                 }
             } else {
                 if (firstRight == null) {
-                    right = new ListNode(a.val);
-                    firstRight = right;
+                    firstRight = a;
+                    right = firstRight;
                 } else {
-                    right.next = new ListNode(a.val);
+                    right.next = a;
                     right = right.next;
                 }
             }
             a = a.next;
         }
-        if (left != null && right != null) {
+        if (left != null) {
             left.next = firstRight;
-        } else if (left == null && right != null) {
+        } else {
             firstLeft = firstRight;
+        }
+        if (right != null) {
+            right.next = null;
         }
         return firstLeft;
     }

@@ -14,8 +14,7 @@ public class PalindromeList {
             A = A.next;
             counter++;
         }
-        ListNode next;
-        ListNode prev = null;
+        ListNode next, prev = null;
         while (A != null) {
             next = A.next;
             A.next = prev;
@@ -30,13 +29,66 @@ public class PalindromeList {
         return 1;
     }
 
-    public int getLength(ListNode node) {
+    private int getLength(ListNode node) {
         int len = 0;
         while (node != null) {
             len++;
             node = node.next;
         }
         return len;
+    }
+
+    // ***************************************************
+
+    private ListNode reverse(ListNode a) {
+        ListNode head = null, next = null;
+        while (a != null) {
+            next = a.next;
+            a.next = head;
+            head = a;
+            a = next;
+        }
+        return head;
+    }
+
+    private int compare(ListNode a, ListNode b) {
+        while (a != null && b != null) {
+            if (a.val != b.val) {
+                return 0;
+            }
+            a = a.next;
+            b = b.next;
+        }
+        return (a == null && b == null) ? 1 : 0;
+    }
+
+    public int lPalin2(ListNode A) {
+        if (A == null || A.next == null) {
+            return 1;
+        }
+        ListNode slow = A, fast = A, lastFirstHalf = null;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            lastFirstHalf = slow;
+            slow = slow.next;
+        }
+        ListNode middle = null;
+        if (fast != null) {
+            middle = slow;
+            slow = slow.next;
+        }
+        ListNode secondHalf = slow;
+        secondHalf = reverse(secondHalf);
+        lastFirstHalf.next = null;
+        int result = compare(A, secondHalf);
+        secondHalf = reverse(secondHalf);
+        if (middle != null) {
+            lastFirstHalf.next = middle;
+            middle.next = secondHalf;
+        } else {
+            lastFirstHalf.next = secondHalf;
+        }
+        return result;
     }
 
     public static void main(String[] args) {
