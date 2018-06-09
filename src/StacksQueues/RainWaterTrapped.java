@@ -9,59 +9,52 @@ import java.util.List;
  */
 public class RainWaterTrapped {
 
-    // DO NOT MODIFY THE LIST
-    public int trap(final List<Integer> a) {
-        int left = 0;
-        int right = a.size() - 1;
-        int res = 0;
-        int maxLeft = 0, maxRight = 0;
+    public int trap1(final List<Integer> A) {
+        int result = 0;
+        int left = 0, right = A.size() - 1;
+        int maxL = 0, maxR = 0;
         while (left <= right) {
-            if (a.get(left) <= a.get(right)) {
-                if (a.get(left) >= maxLeft) maxLeft = a.get(left);
-                else res += maxLeft - a.get(left);
+            if (A.get(left) <= A.get(right)) {
+                if (A.get(left) > maxL) {
+                    maxL = A.get(left);
+                } else {
+                    result += maxL - A.get(left);
+                }
                 left++;
             } else {
-                if (a.get(right) >= maxRight) maxRight = a.get(right);
-                else res += maxRight - a.get(right);
+                if (A.get(right) > maxR) {
+                    maxR = A.get(right);
+                } else {
+                    result += maxR - A.get(right);
+                }
                 right--;
             }
         }
-        return res;
+        return result;
     }
 
-    // DO NOT MODIFY THE LIST
     public int trap2(final List<Integer> A) {
+        int result = 0;
         int n = A.size();
-        int rightMax[], leftMax[];
-        int left, right;
-        int res = 0;
-
-        rightMax = new int[n];
-        leftMax = new int[n];
-
-        left = 0;
-        right = 0;
-
+        int maxL = 0, maxR = 0;
+        int[] rightMax = new int[n];
+        int[] leftMax = new int[n];
         for (int i = 0; i < n; i++) {
-            leftMax[i] = left;
-            if (left < A.get(i))
-                left = A.get(i);
+            leftMax[i] = maxL;
+            if (maxL < A.get(i)) {
+                maxL = A.get(i);
+            }
         }
-
         for (int i = n - 1; i >= 0; i--) {
-            rightMax[i] = right;
-            if (right < A.get(i))
-                right = A.get(i);
+            rightMax[i] = maxR;
+            if (maxR < A.get(i)) {
+                maxR = A.get(i);
+            }
         }
-
         for (int i = 0; i < n; i++) {
-
-            res += Math.max(0, Math.min(leftMax[i], rightMax[i]) - A.get(i));
-
+            result += Math.max(0, Math.min(leftMax[i], rightMax[i]) - A.get(i));
         }
-
-
-        return res;
+        return result;
     }
 
     public static void main(String[] args) {

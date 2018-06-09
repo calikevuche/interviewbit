@@ -1,8 +1,6 @@
 package StacksQueues;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -11,43 +9,47 @@ import java.util.Stack;
 public class SimplifyDirectoryPath {
 
     public String simplifyPath1(String a) {
-        Stack stack = new Stack();
+        Stack<String> stack = new Stack<>();
         String[] paths = a.split("/");
         for (String s : paths) {
-            if (s.equals("") || s.equals(".") || (stack.isEmpty() && s.equals(".."))) continue;
-            else if (s.equals("..")) stack.pop();
-            else stack.push(s);
+            if (!stack.isEmpty() && s.equals("..")) {
+                stack.pop();
+            } else if (!s.equals("") && !s.equals(".") && !s.equals("..")) {
+                stack.push(s);
+            }
         }
-        String result = "";
+        StringBuilder result = new StringBuilder();
         while (!stack.isEmpty()) {
-            String dir = (String) stack.pop();
-            result = "/" + dir + result;
+            String dir = stack.pop();
+            result.insert(0, "/" + dir);
         }
-        return result.isEmpty() ? "/" : result;
+        return (result.length() == 0) ? "/" : result.toString();
     }
 
-    public String simplifyPath(String a) {
-        LinkedList queue = new LinkedList();
+    public String simplifyPath2(String a) {
+        LinkedList<String> queue = new LinkedList<>();
         String[] paths = a.split("/");
         for (String s : paths) {
-            if (s.equals("") || s.equals(".") || (queue.isEmpty() && s.equals(".."))) continue;
-            else if (s.equals("..")) queue.remove();
-            else queue.add(0, s);
+            if (!queue.isEmpty() && s.equals("..")) {
+                queue.remove();
+            } else if (!s.equals("") && !s.equals(".") && !s.equals("..")) {
+                queue.add(0, s);
+            }
         }
-        String result = "";
+        StringBuilder result = new StringBuilder();
         while (!queue.isEmpty()) {
-            String dir = (String) queue.poll();
-            result = "/" + dir + result;
+            String dir = queue.poll();
+            result.insert(0, "/" + dir);
         }
-        return result.isEmpty() ? "/" : result;
+        return (result.length() == 0) ? "/" : result.toString();
     }
 
     public static void main(String[] args) {
         SimplifyDirectoryPath simplifyDirectoryPath = new SimplifyDirectoryPath();
-        System.out.println(simplifyDirectoryPath.simplifyPath("/home/"));
-        System.out.println(simplifyDirectoryPath.simplifyPath("/a/./b/../../c/"));
-        System.out.println(simplifyDirectoryPath.simplifyPath("/a/./b//../c/"));
-        System.out.println(simplifyDirectoryPath.simplifyPath("/../"));
-        System.out.println(simplifyDirectoryPath.simplifyPath("/home//foo/"));
+        System.out.println(simplifyDirectoryPath.simplifyPath2("/home/"));
+        System.out.println(simplifyDirectoryPath.simplifyPath2("/a/./b/../../c/"));
+        System.out.println(simplifyDirectoryPath.simplifyPath2("/a/./b//../c/"));
+        System.out.println(simplifyDirectoryPath.simplifyPath2("/../"));
+        System.out.println(simplifyDirectoryPath.simplifyPath2("/home//foo/"));
     }
 }

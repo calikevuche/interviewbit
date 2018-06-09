@@ -7,39 +7,44 @@ import java.util.*;
  */
 public class SlidingWindowMax {
 
-    // DO NOT MODIFY THE LIST
-    public ArrayList<Integer> slidingMaximum(final List<Integer> a, int b) {
+    public ArrayList<Integer> slidingMaximum(final List<Integer> A, int w) {
         ArrayList<Integer> maxValues = new ArrayList<>();
-        if (a.size() == 0) return maxValues;
-        else if (b >= a.size()) {
-            maxValues.add(getMax(a));
+        if (A.size() == 0) {
+            return maxValues;
+        } else if (w >= A.size()) {
+            maxValues.add(getMax(A));
             return maxValues;
         }
-        LinkedList<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < b; i++) {
-            while (!queue.isEmpty() && a.get(queue.get(0)) <= a.get(i)) {
-                queue.remove(0);
+        LinkedList<Integer> queue = new LinkedList<>(); // indexes
+        for (int i = 0; i < w; i++) {
+            while (!queue.isEmpty() && A.get(i) >= A.get(queue.getFirst())) {
+                queue.pollFirst();
             }
-            queue.add(0, i);
+            queue.addFirst(i);
         }
-        for (int i = b; i < a.size(); i++) {
-            maxValues.add(a.get(queue.get(queue.size() - 1)));
-            while (!queue.isEmpty() && a.get(queue.get(0)) <= a.get(i)) {
-                queue.remove(0);
+        maxValues.add(A.get(queue.getLast()));
+        for (int i = w; i < A.size(); i++) {
+            while (!queue.isEmpty() && A.get(i) >= A.get(queue.getFirst())) {
+                queue.pollFirst();
             }
-            while (!queue.isEmpty() && (i >= queue.get(queue.size() - 1) + b)) {
-                queue.remove(queue.size() - 1);
+            while (!queue.isEmpty() && (i > queue.getLast() + w - 1)) {
+                queue.removeLast();
             }
-            queue.add(0, i);
+            queue.addFirst(i);
+            maxValues.add(A.get(queue.getLast()));
         }
-        maxValues.add(a.get(queue.get(queue.size() - 1)));
         return maxValues;
     }
 
     private int getMax(List<Integer> list) {
+        if (list == null || list.isEmpty()) {
+            return 0;
+        }
         int result = list.get(0);
         for (int i = 1; i < list.size(); i++) {
-            if (list.get(i) > result) result = list.get(i);
+            if (list.get(i) > result) {
+                result = list.get(i);
+            }
         }
         return result;
     }

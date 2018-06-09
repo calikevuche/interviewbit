@@ -8,17 +8,17 @@ import java.util.Stack;
 public class ReverseString {
 
     public String reverseString(String a) {
-        String result = "";
-        Stack stack = new Stack();
+        StringBuilder result = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
         char[] chars = a.toCharArray();
         for (char c : chars) {
             stack.push(c);
         }
         while (!stack.isEmpty()) {
-            char c = (char) stack.pop();
-            result += c;
+            char c = stack.pop();
+            result.append(c);
         }
-        return result;
+        return result.toString();
     }
 
     public static void main(String[] args) {
