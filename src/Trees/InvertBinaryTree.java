@@ -13,6 +13,4 @@ public class InvertBinaryTree {
         invertTree(node.right);
         return node;
     }
-
-    public static void main(String[] args) { }
 }

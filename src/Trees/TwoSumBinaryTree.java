@@ -4,7 +4,9 @@ import java.util.Stack;
 
 public class TwoSumBinaryTree {
 
-    public int t2Sum(TreeNode root, int sum) {
+    // 1 - true, 0 - false
+
+    public int t2SumV1(TreeNode root, int sum) {
         if (root == null) {
             return 0;
         }
@@ -17,17 +19,15 @@ public class TwoSumBinaryTree {
                 n = n.left;
             }
             n = stack.pop();
-            if (sum > 2 * n.val &&
-                    hasNum(root, sum - n.val)) {
+            if (sum > 2 * n.val && hasNum(root, sum - n.val)) {
                 return 1;
             }
             n = n.right;
         }
-
-        return 0; // 1 - true, 0 - false
+        return 0;
     }
 
-    public boolean hasNum(TreeNode node, int num) {
+    private boolean hasNum(TreeNode node, int num) {
         if (node == null) {
             return false;
         }
@@ -43,7 +43,7 @@ public class TwoSumBinaryTree {
 
     // using iterator
 
-    public int t2SumIter(TreeNode root, int sum) {
+    public int t2SumV2(TreeNode root, int sum) {
         if (root == null) {
             return 0;
         }
@@ -61,8 +61,7 @@ public class TwoSumBinaryTree {
                 j = iterator.prev();
             }
         }
-
-        return 0; // 1 - true, 0 - false
+        return 0;
     }
 
     public static void main(String[] args) {
@@ -75,6 +74,6 @@ public class TwoSumBinaryTree {
         node1.left.right = new TreeNode(6);
 
         TwoSumBinaryTree ins = new TwoSumBinaryTree();
-        int res = ins.t2Sum(node1, 24);
+        int res = ins.t2SumV1(node1, 24);
     }
 }

@@ -4,14 +4,15 @@ import java.util.Stack;
 
 public class FlattenBinaryTreeToLinkedList {
 
-    public TreeNode flatten0(TreeNode a) {
-        if (a == null) {
+    // NOT in-place
+    public TreeNode flatten0(TreeNode A) {
+        if (A == null) {
             return null;
         }
         TreeNode linkedList = null;
         TreeNode linkedListRoot = null;
         Stack<TreeNode> stack = new Stack<>();
-        stack.push(a);
+        stack.push(A);
 
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
@@ -28,39 +29,28 @@ public class FlattenBinaryTreeToLinkedList {
             stack.push(node.right);
             stack.push(node.left);
         }
-
         return linkedListRoot;
     }
 
-    // more interested
-
-    // Attatches the right sub-tree to the rightmost leaf of the left sub-tree
-    // Makes the left sub-tree to the right sub-tree
-
-    public TreeNode flatten(TreeNode a) {
-        if (a == null) {
+    // preorder traversal
+    public TreeNode flatten1(TreeNode A) {
+        if (A == null) {
             return null;
         }
-        TreeNode next = a;
+        TreeNode node = A;
 
-        while (next != null) {
-            if (next.left != null) {
-                TreeNode mostRight = next.left;
+        while (node != null) {
+            if (node.left != null) {
+                TreeNode mostRight = node.left;
                 while (mostRight.right != null) {
                     mostRight = mostRight.right;
                 }
-                mostRight.right = next.right;
-                next.right = next.left;
-                next.left = null;
+                mostRight.right = node.right;
+                node.right = node.left;
+                node.left = null;
             }
-
-            next = next.right;
+            node = node.right;
         }
-
-        return a;
-    }
-
-    public static void main(String[] args) {
-
+        return A;
     }
 }

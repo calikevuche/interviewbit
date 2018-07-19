@@ -6,13 +6,12 @@ public class ZigZagLevelOrderTraversalBt {
 
     // complicated with 2 maps
 
-    Map<Integer, ArrayList<TreeNode>> levelListNodesMap = new HashMap<>();
-
     public ArrayList<ArrayList<Integer>> zigzagLevelOrder(TreeNode root) {
-        breadthFirstSearch(root);
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-        ArrayList<TreeNode> nodeList;
-        ArrayList<Integer> intList;
+        Map<Integer, ArrayList<TreeNode>> levelListNodesMap = new HashMap<>();
+        breadthFirstSearch(root, levelListNodesMap);
+        ArrayList<TreeNode> nodeList = null;
+        ArrayList<Integer> intList = null;
         int i = 0;
         for (int key: levelListNodesMap.keySet()) {
             nodeList = levelListNodesMap.get(key);
@@ -29,14 +28,15 @@ public class ZigZagLevelOrderTraversalBt {
         return result;
     }
 
-    private void breadthFirstSearch(TreeNode root) {
+    private void breadthFirstSearch(TreeNode root, Map<Integer, ArrayList<TreeNode>> levelListNodesMap) {
         Queue<TreeNode> q = new LinkedList<>();
-        Map<TreeNode, Integer> nodeLevelMap = new HashMap<>();
-
         q.add(root);
+
+        Map<TreeNode, Integer> nodeLevelMap = new HashMap<>();
         nodeLevelMap.put(root, 0);
-        TreeNode node;
-        Integer level;
+
+        TreeNode node = null;
+        int level = 0;
         ArrayList<TreeNode> arrayList;
 
         while (!q.isEmpty()) {
@@ -45,12 +45,10 @@ public class ZigZagLevelOrderTraversalBt {
             if (node == null) {
                 continue;
             }
-
             q.add(node.left);
             q.add(node.right);
             nodeLevelMap.put(node.left, level + 1);
             nodeLevelMap.put(node.right, level + 1);
-
             arrayList = levelListNodesMap.getOrDefault(level, new ArrayList<>());
             arrayList.add(node);
             levelListNodesMap.put(level, arrayList);
@@ -61,15 +59,14 @@ public class ZigZagLevelOrderTraversalBt {
 
     public ArrayList<ArrayList<Integer>> zigzagLevelOrder2(TreeNode root) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
-
         Stack<TreeNode> stack1 = new Stack<>();
         Stack<TreeNode> stack2 = new Stack<>();
-        Stack<TreeNode> temp;
+        Stack<TreeNode> temp = null;
         stack1.push(root);
 
         boolean reverse = false;
-        TreeNode node;
-        ArrayList<Integer> arrayList;
+        TreeNode node = null;
+        ArrayList<Integer> arrayList = null;
 
         while (!stack1.isEmpty() || !stack2.isEmpty()) {
             arrayList = new ArrayList<>();
@@ -80,7 +77,6 @@ public class ZigZagLevelOrderTraversalBt {
                     continue;
                 }
                 arrayList.add(node.val);
-
                 if (reverse) {
                     stack2.push(node.right);
                     stack2.push(node.left);
@@ -93,14 +89,11 @@ public class ZigZagLevelOrderTraversalBt {
             temp = stack1;
             stack1 = stack2;
             stack2 = temp;
-            stack2.clear();
             reverse = !reverse;
-
             if (!arrayList.isEmpty()) {
                 result.add(arrayList);
             }
         }
-
         return result;
     }
 
@@ -110,13 +103,11 @@ public class ZigZagLevelOrderTraversalBt {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-
-        TreeNode node;
+        TreeNode node = null;
         boolean reverse = false;
 
         while (!q.isEmpty()) {
-            int size = q.size();
-            int i = 0;
+            int i = 0, size = q.size();
             ArrayList<Integer> arrayList = new ArrayList<>();
             while (i < size) {
                 i++;

@@ -12,7 +12,7 @@ public class NextGreaterNumberBst {
         } else {
             TreeNode result = null;
             TreeNode node = root;
-            while (node.val != value) {
+            while (node != current) {
                 if (node.val > value) {
                     result = node;
                     node = node.left;
@@ -30,7 +30,7 @@ public class NextGreaterNumberBst {
                 return node;
             } else if (node.val < value) {
                 node = node.right;
-            } else if (node.val > value) {
+            } else {
                 node = node.left;
             }
         }

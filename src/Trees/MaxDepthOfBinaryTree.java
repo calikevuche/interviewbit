@@ -5,23 +5,30 @@ public class MaxDepthOfBinaryTree {
     private int result = 0;
 
     public int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
         maxDepth(root, result + 1);
         return result;
     }
 
     private void maxDepth(TreeNode node, int depth) {
-        if (node == null) return;
-        if (node.left == null && node.right == null) {
-            if (depth > result) result = depth;
+        if (node.left == null && node.right == null && depth > result) {
+            result = depth;
         }
-        if (node.left !=null) maxDepth(node.left, depth + 1);
-        if (node.right !=null) maxDepth(node.right, depth + 1);
+        if (node.left != null) {
+            maxDepth(node.left, depth + 1);
+        }
+        if (node.right != null) {
+            maxDepth(node.right, depth + 1);
+        }
     }
 
-    // great solution
 
     public int maxDepth2(TreeNode node) {
-        if (node == null) return 0;
+        if (node == null) {
+            return 0;
+        }
         return 1 + Math.max(maxDepth2(node.left), maxDepth2(node.right));
     }
 

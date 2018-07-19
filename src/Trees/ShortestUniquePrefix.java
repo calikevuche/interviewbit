@@ -8,10 +8,9 @@ public class ShortestUniquePrefix {
     public ArrayList<String> prefix(ArrayList<String> words) {
         ArrayList<String> result = new ArrayList<>();
         TrieNode root = new TrieNode();
-        TrieNode node, next;
+        TrieNode node = null, newNode = null;
 
         // insert
-
         for (String word : words) {
             node = root;
             for (int i = 0; i < word.length(); i++) {
@@ -19,9 +18,9 @@ public class ShortestUniquePrefix {
                 if (node.children.containsKey(c)) {
                     node = node.children.get(c);
                 } else {
-                    next = new TrieNode();
-                    node.children.put(c, next);
-                    node = next;
+                    newNode = new TrieNode();
+                    node.children.put(c, newNode);
+                    node = newNode;
                 }
                 if (i == word.length() - 1) {
                     node.endOfWord = true;
@@ -30,22 +29,17 @@ public class ShortestUniquePrefix {
         }
 
         // search
-
-        int endIndex;
-
         for (String word: words) {
             node = root;
-            endIndex = -1;
+            int endIndex = 0;
             for (int i = 0; i < word.length(); i++) {
                 char c = word.charAt(i);
                 node = node.children.get(c);
-                if (endIndex == -1 &&
-                        node.children.size() < 2) {
+                if (endIndex == 0 && node.children.size() < 2) {
                     endIndex = i+1;
                 }
-                if (endIndex != -1 &&
-                        node.children.size() > 1) {
-                    endIndex = -1;
+                if (endIndex != 0 && node.children.size() > 1) {
+                    endIndex = 0;
                 }
             }
             result.add(word.substring(0, endIndex));
@@ -54,15 +48,13 @@ public class ShortestUniquePrefix {
         return result;
     }
 
-    // solution with count
 
     public ArrayList<String> prefix2(ArrayList<String> words) {
         ArrayList<String> result = new ArrayList<>();
         TrieNode root = new TrieNode();
-        TrieNode node, next;
+        TrieNode node = null, newNode = null;
 
         // insert
-
         for (String word : words) {
             node = root;
             for (int i = 0; i < word.length(); i++) {
@@ -71,9 +63,9 @@ public class ShortestUniquePrefix {
                     node = node.children.get(c);
                     node.count++;
                 } else {
-                    next = new TrieNode();
-                    node.children.put(c, next);
-                    node = next;
+                    newNode = new TrieNode();
+                    node.children.put(c, newNode);
+                    node = newNode;
                 }
                 if (i == word.length() - 1) {
                     node.endOfWord = true;
@@ -82,7 +74,6 @@ public class ShortestUniquePrefix {
         }
 
         // search
-
         for (String word: words) {
             node = root;
             for (int i = 0; i < word.length(); i++) {

@@ -2,6 +2,8 @@ package Trees;
 
 public class SymmetricBinaryTree {
 
+    // 0 for false, 1 for true
+
     public int isSymmetric(TreeNode A) {
         if (A == null) {
             return 1;
@@ -12,16 +14,19 @@ public class SymmetricBinaryTree {
     private int isSymmetric(TreeNode A, TreeNode B) {
         if (A == null && B == null) {
             return 1;
-        } else if (A == null || B == null) {
+        }
+        if (A == null || B == null) {
             return 0;
         }
-
-        int equals = A.val == B.val ? 1 : 0;
-        int sym1 = isSymmetric(A.left, B.right);
-        int sym2 = isSymmetric(A.right, B.left);
-
-        return equals == 1 && sym1 == 1 & sym2 == 1 ? 1 : 0;
+        if (A.val != B.val) {
+            return 0;
+        }
+        if (isSymmetric(A.left, B.right) == 0) {
+            return 0;
+        }
+        return isSymmetric(A.right, B.left);
     }
 
-    public static void main(String[] args) { }
+    public static void main(String[] args) {
+    }
 }

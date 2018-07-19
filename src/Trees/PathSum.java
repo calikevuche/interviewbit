@@ -7,20 +7,22 @@ import java.util.Queue;
 
 public class PathSum {
 
+    // return 0 - false, 1 - true
+
     public int hasPathSum(TreeNode root, int sum) {
+        if (root == null) {
+            return 0;
+        }
         Map<TreeNode, Integer> map = new HashMap<>();
+        map.put(root, root.val);
+
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-        map.put(root, root.val);
 
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
-            if (node.left == null &&
-                    node.right == null) {
-                if (map.get(node) == sum) {
-                    return 1;
-                }
-                continue;
+            if (node.left == null && node.right == null && map.get(node) == sum) {
+                return 1;
             }
             if (node.left != null) {
                 map.put(node.left, map.get(node) + node.left.val);
@@ -31,29 +33,25 @@ public class PathSum {
                 queue.add(node.right);
             }
         }
-
-        return 0; // 0 - false, 1 - true
+        return 0;
     }
-
-    // recursion without HashMap
 
     public int hasPathSum2(TreeNode node, int sum) {
         if (node == null) {
             return 0;
         }
-        if (node.left == null &&
-                node.right == null &&
-                node.val == sum) {
+        if (node.left == null && node.right == null && node.val == sum) {
             return 1;
         }
-        int left = 0, right = 0;
-        if (node.left != null) {
-            left = hasPathSum2(node.left, sum - node.val);
+        if (node.left != null &&
+                hasPathSum2(node.left, sum - node.val) == 1) {
+            return 1;
         }
-        if (node.right != null) {
-            right = hasPathSum2(node.right, sum - node.val);
+        if (node.right != null &&
+                hasPathSum2(node.right, sum - node.val) == 1) {
+            return 1;
         }
-        return (left + right == 0) ? 0 : 1;
+        return 0;
     }
 
     public static void main(String[] args) {

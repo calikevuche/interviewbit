@@ -1,26 +1,28 @@
 package Trees;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Stack;
 
 public class PostorderTraversal {
 
     public ArrayList<Integer> postorderTraversal(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<>();
-        Stack<TreeNode> stack1 = new Stack<>();
-        Stack<TreeNode> stack2 = new Stack<>();
-        TreeNode node = root;
-        stack1.push(node);
-        while (!stack1.isEmpty()) {
-            node = stack1.pop();
-            stack2.push(node);
-            if (node.left != null) stack1.push(node.left);
-            if (node.right != null) stack1.push(node.right);
-        }
-        while (!stack2.isEmpty()) {
-            node = stack2.pop();
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        TreeNode node = null;
+
+        while (!stack.isEmpty()) {
+            node = stack.pop();
             result.add(node.val);
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+            if (node.right != null) {
+                stack.push(node.right);
+            }
         }
+        Collections.reverse(result);
         return result;
     }
 

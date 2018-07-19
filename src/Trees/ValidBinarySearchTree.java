@@ -7,7 +7,7 @@ public class ValidBinarySearchTree {
         return isValidBSTBoolean(A) ? 1 : 0;
     }
 
-    public boolean isValidBSTBoolean(TreeNode root) {
+    private boolean isValidBSTBoolean(TreeNode root) {
         return root == null ||
                 isSubTreeLesser(root.left, root.val) &&
                         isSubTreeGreater(root.right, root.val) &&
@@ -28,8 +28,6 @@ public class ValidBinarySearchTree {
                         isSubTreeGreater(node.left, value) &&
                         isSubTreeGreater(node.right, value);
     }
-
-    // FASTER SOLUTION
 
     // 0 - false, 1 - true
     public int isValidBST2(TreeNode A) {

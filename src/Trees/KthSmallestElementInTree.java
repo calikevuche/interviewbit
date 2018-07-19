@@ -15,28 +15,23 @@ public class KthSmallestElementInTree {
 
         while (!stack.isEmpty()) {
             TreeNode node = stack.peek();
-            if (node == null) {
-                stack.pop();
-                continue;
-            }
             while (node.left != null) {
                 node = node.left;
                 stack.push(node);
             }
             node = stack.pop();
             arrayList.add(node.val);
-            node.left = null;
+//            node.left = null;
 
-            while (!stack.isEmpty() &&
-                    node.right == null) {
+            while (!stack.isEmpty() && node.right == null) {
                 node = stack.pop();
                 arrayList.add(node.val);
                 node.left = null;
             }
-
-            stack.push(node.right);
+            if (node.right != null) {
+                stack.push(node.right);
+            }
         }
-
         return arrayList.get(k - 1);
     }
 
@@ -46,45 +41,65 @@ public class KthSmallestElementInTree {
         if (root == null) {
             return 0;
         }
-        ArrayList<Integer> arrayList = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode node = root;
+        stack.push(root);
 
-        while (!stack.isEmpty() || node != null) {
-            while (node != null) {
-                stack.push(node);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.peek();
+            while (node.left != null) {
                 node = node.left;
+                stack.push(node);
             }
             node = stack.pop();
-            arrayList.add(node.val);
-            if (arrayList.size() == k) {
-                return arrayList.get(arrayList.size() - 1);
+            if (k == 1) {
+                return node.val;
+            } else {
+                k--;
             }
-            node = node.right;
-        }
 
+            while (!stack.isEmpty() && node.right == null) {
+                node = stack.pop();
+                node.left = null;
+                if (k == 1) {
+                    return node.val;
+                } else {
+                    k--;
+                }
+            }
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+        }
         return 0;
     }
 
     // recursive
 
-    int counter;
+    class Counter {
+        int val;
 
-    public int kthsmallest(TreeNode root, int k) {
-        counter = k;
-        return kthsmallestInternal(root);
+        Counter(int val) {
+            this.val = val;
+        }
     }
 
-    private int kthsmallestInternal(TreeNode root) {
-        if (root == null) {
-            return -1;
-        }
-        int k1 = kthsmallestInternal(root.left);
-        if (counter == 0) return k1;
-        counter--;
-        if (counter == 0) return root.val;
+    public int kthsmallest2(TreeNode root, int k) {
+        return kthsmallestInternal(root, new Counter(k));
+    }
 
-        return kthsmallestInternal(root.right);
+    private int kthsmallestInternal(TreeNode root, Counter counter) {
+        if (root == null) {
+            return 0;
+        }
+        int left = kthsmallestInternal(root.left, counter);
+        if (counter.val == 0) {
+            return left;
+        }
+        counter.val--;
+        if (counter.val == 0) {
+            return root.val;
+        }
+        return kthsmallestInternal(root.right, counter);
     }
 
     public static void main(String[] args) {
@@ -100,11 +115,10 @@ public class KthSmallestElementInTree {
         node1.left.right.right = new TreeNode(8);
 
 
-
         TreeNode node2 = new TreeNode(3);
         node2.right = new TreeNode(4);
 
         KthSmallestElementInTree ins = new KthSmallestElementInTree();
-        int res = ins.kthsmallest(node1, 3);
+        int res = ins.kthsmallest2(node1, 3);
     }
 }

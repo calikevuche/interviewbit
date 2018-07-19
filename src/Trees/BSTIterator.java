@@ -14,13 +14,9 @@ public class BSTIterator {
         next = prev = root;
     }
 
-    /** @return whether we have a next smallest number */
-
     public boolean hasNext() {
         return !stackNext.isEmpty() || next != null;
     }
-
-    /** @return the next smallest number */
 
     public int next() {
         while (next != null) {
@@ -44,20 +40,5 @@ public class BSTIterator {
         TreeNode temp = stackPrev.pop();
         prev = temp.left;
         return temp.val;
-    }
-
-    public static void main(String[] args) {
-        TreeNode node1 = new TreeNode(10);
-
-        node1.left = new TreeNode(5);
-        node1.right = new TreeNode(20);
-
-        node1.left.left = new TreeNode(3);
-        node1.left.right = new TreeNode(6);
-
-        BSTIterator iterator = new BSTIterator(node1);
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
     }
 }

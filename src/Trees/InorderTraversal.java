@@ -9,11 +9,11 @@ public class InorderTraversal {
 
 
     // good
-
     public ArrayList<Integer> inorderTraversal(TreeNode root) {
         ArrayList<Integer> result = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         TreeNode node = root;
+
         while (!stack.isEmpty() || node != null) {
             while (node != null) {
                 stack.push(node);
@@ -27,34 +27,33 @@ public class InorderTraversal {
     }
 
     // bad
-
     public ArrayList<Integer> inorderTraversal2(TreeNode root) {
-        ArrayList<TreeNode> arrayList = new ArrayList<>();
+        ArrayList<Integer> intList = new ArrayList<>();
+        if (root == null) {
+            return intList;
+        }
+        ArrayList<TreeNode> nodeList = new ArrayList<>();
+        nodeList.add(root);
         Queue<TreeNode> q = new LinkedList<>();
-
-        arrayList.add(root);
-        int index = arrayList.indexOf(root);
-        if (root.right != null) arrayList.add(index + 1, root.right);
-        if (root.left != null) arrayList.add(index, root.left);
-        q.add(root.left);
-        q.add(root.right);
-        TreeNode node;
+        q.add(root);
+        TreeNode node = null;
+        int index = 0;
         while (!q.isEmpty()) {
             node = q.poll();
-            if (node == null) {
-                continue;
+            index = nodeList.indexOf(node);
+            if (node.right != null) {
+                nodeList.add(index + 1, node.right);
+                q.add(node.right);
             }
-            index = arrayList.indexOf(node);
-            if (node.right != null) arrayList.add(index + 1, node.right);
-            if (node.left != null) arrayList.add(index, node.left);
-            q.add(node.left);
-            q.add(node.right);
+            if (node.left != null) {
+                nodeList.add(index, node.left);
+                q.add(node.left);
+            }
         }
-        ArrayList<Integer> result = new ArrayList<>();
-        for (TreeNode treeNode : arrayList) {
-            result.add(treeNode.val);
+        for (TreeNode n : nodeList) {
+            intList.add(n.val);
         }
-        return result;
+        return intList;
     }
 
     public static void main(String[] args) {

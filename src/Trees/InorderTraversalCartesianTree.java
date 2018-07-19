@@ -7,39 +7,32 @@ import java.util.List;
 public class InorderTraversalCartesianTree {
 
     public TreeNode buildTree(ArrayList<Integer> A) {
-        if (A.isEmpty()) {
+        if (A == null || A.isEmpty()) {
             return null;
         }
-        return buildTreeInternal(A);
+        return buildTree(A, 0, A.size() - 1);
     }
 
-    private TreeNode buildTreeInternal(List<Integer> list) {
-        if (list.isEmpty()) {
+    private TreeNode buildTree(ArrayList<Integer> A, int start, int end) {
+        if (start > end) {
             return null;
         }
-        int id = findGreaterElementId(list);
-        int val = list.get(id);
+        int id = getMaxElementIndex(A, start, end);
+        int val = A.get(id);
         TreeNode newNode = new TreeNode(val);
-        if (list.size() == 1) {
-            return newNode;
-        }
-
-        newNode.left = buildTreeInternal(list.subList(0, id));
-        newNode.right = buildTreeInternal(list.subList(id + 1, list.size()));
+        newNode.left = buildTree(A, start, id - 1);
+        newNode.right = buildTree(A, id + 1, end);
         return newNode;
     }
 
-    private int findGreaterElementId(List<Integer> list) {
-        if (list.size() == 0) {
-            return -1;
-        }
-        int result = 0;
-        for (int i = 1; i < list.size(); i++) {
-            if (list.get(i) > list.get(result)) {
-                result = i;
+    private int getMaxElementIndex(List<Integer> list, int start, int end) {
+        int index = start;
+        for (int i = start + 1; i <= end; i++) {
+            if (list.get(i) > list.get(index)) {
+                index = i;
             }
         }
-        return result;
+        return index;
     }
 
     public static void main(String[] args) {

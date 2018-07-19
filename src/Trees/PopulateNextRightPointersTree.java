@@ -5,19 +5,19 @@ import java.util.Queue;
 
 public class PopulateNextRightPointersTree {
 
-    public void connect(TreeLinkNode root) {
+    public void connect1(TreeLinkNode root) {
+        if (root == null) {
+            return;
+        }
         Queue<TreeLinkNode> queue1 = new LinkedList<>();
         Queue<TreeLinkNode> queue2 = new LinkedList<>();
-        Queue<TreeLinkNode> temp;
+        Queue<TreeLinkNode> temp = null;
         queue1.add(root);
 
         while (!queue1.isEmpty()) {
 
             while (!queue1.isEmpty()) {
                 TreeLinkNode current = queue1.poll();
-                if (current == null) {
-                    continue;
-                }
                 TreeLinkNode next = queue1.peek();
                 if (next != null) {
                     current.next = next;
@@ -29,52 +29,46 @@ public class PopulateNextRightPointersTree {
                     queue2.add(current.right);
                 }
             }
-
             temp = queue1;
             queue1 = queue2;
             queue2 = temp;
-            queue2.clear();
         }
     }
 
     public void connect2(TreeLinkNode root) {
-        if(root==null)
+        if (root == null) {
             return;
-
+        }
         //we update the tree row by row (elements at same depth)
         //first while loop iterates across rows and second iterates within a row
-        //p points to first child of next row to be processed
+        //firstNode points to first child of next row to be processed
+        TreeLinkNode firstNode = root;
 
-        TreeLinkNode p = root;
+        while (firstNode != null) {
+            TreeLinkNode cur = firstNode;
+            firstNode = null;
 
-        while (p != null) {
-            TreeLinkNode cur = p;
-            p = null;
             //we use prevUpd to keep track of last node in a row whose next has NOT been updated
             TreeLinkNode prevUpd = null;
-            //update entire row
+
             while (cur != null) {
                 if (cur.left != null) {
-                    //if this is the first child in this row
-                    if (p == null)
-                        p = cur.left;
+                    if (firstNode == null) {
+                        firstNode = cur.left;
+                    }
                     if (prevUpd != null) {
                         prevUpd.next = cur.left;
                     }
                     prevUpd = cur.left;
-                    if (cur.right != null) {
-                        cur.left.next = cur.right;
-                        prevUpd = cur.right;
+                }
+                if (cur.right != null) {
+                    if (firstNode == null) {
+                        firstNode = cur.right;
                     }
-                } else {
-                    if (cur.right != null) {
-                        //if this is the first child in this row
-                        if (p == null)
-                            p = cur.right;
-                        if (prevUpd != null)
-                            prevUpd.next = cur.right;
-                        prevUpd = cur.right;
+                    if (prevUpd != null) {
+                        prevUpd.next = cur.right;
                     }
+                    prevUpd = cur.right;
                 }
                 cur = cur.next;
             }
