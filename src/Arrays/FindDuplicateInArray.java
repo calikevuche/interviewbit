@@ -101,6 +101,17 @@ public class FindDuplicateInArray {
         return -1;
     }
 
+    public int repeatedNumberXor(List<Integer> list) {
+        int result = 0;
+        for (int i = 1; i <= list.size() - 1; i++) {
+            result = result ^ i;
+        }
+        for (int e: list) {
+            result = result ^ e;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         FindDuplicateInArray ins = new FindDuplicateInArray();
         System.out.println(ins.repeatedNumberV2(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10)));
@@ -109,5 +120,7 @@ public class FindDuplicateInArray {
         System.out.println(ins.repeatedNumberV2(Arrays.asList()));
         System.out.println(ins.repeatedNumberV2(Arrays.asList(1)));
         System.out.println(ins.repeatedNumberV2(Arrays.asList(2,2)));
+
+        System.out.println(ins.repeatedNumberXor(Arrays.asList(3,4,1,4,1)));
     }
 }

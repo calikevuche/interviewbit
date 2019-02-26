@@ -56,7 +56,7 @@ public class Factorization {
         Integer[] sieve = new Integer[a + 1];
         Arrays.fill(sieve, 1);
         sieve[0] = 0;
-        sieve[1] = 1;
+        sieve[1] = 0;
 
         for (int i = 2; i < Math.sqrt(a); i++) {
             for (int j = 2; j * i <= a; j++) {
