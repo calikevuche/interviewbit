@@ -85,8 +85,9 @@ public class LengthLongestSubsequence {
 
         int max = 0;
         for (int i = 0; i < array.length; i++) {
-            if (increment[i] + decrement[i] - 1 > max) {
-                max = increment[i] + decrement[i] - 1;
+            int max1 = increment[i] + decrement[i] - 1;
+            if (max1 > max) {
+                max = max1;
             }
         }
         return max;
