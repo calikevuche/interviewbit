@@ -25,7 +25,8 @@ public class PalindromeInteger {
         int rev = 0;
         while (a > 0) {
             digit = a % 10;
-            if (rev > (Integer.MAX_VALUE / 10) || rev == (Integer.MAX_VALUE / 10) && digit > (Integer.MAX_VALUE % 10)) {
+            if (rev > (Integer.MAX_VALUE / 10) ||
+                    rev == (Integer.MAX_VALUE / 10) && digit > (Integer.MAX_VALUE % 10)) {
                 return -1;
             }
             rev = rev * 10 + digit;

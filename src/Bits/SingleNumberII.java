@@ -12,7 +12,6 @@ public class SingleNumberII {
     public int singleNumber(final List<Integer> a) {
         int mask1 = 0;
         int mask2 = 0;
-        int mask3 = 0;
         for (int i = 0; i < a.size(); i++) {
             int num = a.get(i);
             int j = 0;

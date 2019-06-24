@@ -38,7 +38,7 @@ public class RotateMatrix {
         if (a == null) return;
         int n = a.size();
         if (n == 0) return;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n / 2; i++) {
             for (int j = i; j < n - i - 1; j++) {
 
                 // right
