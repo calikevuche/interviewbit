@@ -1,1 +1,3 @@
-Java solutions for coding challenges on www.interviewbit.com
+## InterviewBit - Programming Solutions
+
+Profile link: __https://www.interviewbit.com/profile/oleh_kapustianov__
